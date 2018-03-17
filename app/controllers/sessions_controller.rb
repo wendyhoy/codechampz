@@ -15,16 +15,15 @@ class SessionsController < ApplicationController
         redirect_to student_drill_groups_path
       end
     else
-      flash.now[:alert] = "Wrong email or password!"
       render :new
     end
   end
 
-  def destroy
-    session[:user_id] = nil
-    flash[:notice] = 'Signed out!'
-    redirect_to root_path
-  end
+  # def destroy
+  #   session[:user_id] = nil
+  #   flash[:notice] = 'Signed out!'
+  #   redirect_to root_path
+  # end
 
   private
   def session_params

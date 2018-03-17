@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker', '~> 1.8.7'
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'simple_form'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
