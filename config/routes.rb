@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  resources :student_drills
+  resources :student_drill_groups
+  resources :solutions
+  resources :drills
+  resources :drill_groups
+  resources :users
+
 end

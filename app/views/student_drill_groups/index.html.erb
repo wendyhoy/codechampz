@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Student Drill Groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Drill group</th>
+      <th>Points awarded</th>
+      <th>Score</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @student_drill_groups.each do |student_drill_group| %>
+      <tr>
+        <td><%= student_drill_group.user %></td>
+        <td><%= student_drill_group.drill_group %></td>
+        <td><%= student_drill_group.points_awarded %></td>
+        <td><%= student_drill_group.score %></td>
+        <td><%= link_to 'Show', student_drill_group %></td>
+        <td><%= link_to 'Edit', edit_student_drill_group_path(student_drill_group) %></td>
+        <td><%= link_to 'Destroy', student_drill_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student Drill Group', new_student_drill_group_path %>
