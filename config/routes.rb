@@ -2,11 +2,16 @@ Rails.application.routes.draw do
 
   resources :student_drills
   resources :student_drill_groups
-  resources :solutions
   resources :drill_groups do
-    resources :drills, except: :index, shallow: true
+    resources :drills, except: :index, shallow: true do
+      resources :solutions, except: :index
+    end
   end
-  resources :users
+  
+  resources :users, shallow: true do
+     resources :student_drill_groups
+     resources :student_drills
+   end
 
   resource :session, only: [:new, :create, :delete]
 end
