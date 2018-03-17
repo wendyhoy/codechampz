@@ -1,6 +1,8 @@
 class DrillGroup < ApplicationRecord
   belongs_to :user
-  has_many :drills
+  
+  has_many :drills, dependent: :destroy
+
   has_many :students, through: :student_drill_groups, source: :user
 
   validates :name, presence: true, length: { in: 8..40 }, uniqueness: { case_sensitive: false }
