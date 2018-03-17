@@ -31,6 +31,7 @@ gem 'faker', '~> 1.8.7'
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'cancancan'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -41,6 +42,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rails-erd'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
