@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">
+  <%= notice %>
+</p>
 
 <p>
   <strong>Question:</strong>
@@ -10,5 +12,15 @@
   <%= @drill.drill_group %>
 </p>
 
-<%= link_to 'Edit', edit_drill_path(@drill) %> |
-<%= link_to 'Back', drills_path %>
+<p>
+  <strong>Solutions:</strong>
+  <ul>
+    <% @drill.solutions.each do |s| %>
+      <li>
+        <%= s.solution %>
+      </li>
+      <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_drill_path(@drill) %>
