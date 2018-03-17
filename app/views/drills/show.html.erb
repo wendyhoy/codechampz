@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @drill.question %>
+</p>
+
+<p>
+  <strong>Drill group:</strong>
+  <%= @drill.drill_group %>
+</p>
+
+<%= link_to 'Edit', edit_drill_path(@drill) %> |
+<%= link_to 'Back', drills_path %>

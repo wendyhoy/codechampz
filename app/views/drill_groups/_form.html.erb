@@ -1,0 +1,47 @@
+<%= form_with(model: drill_group, local: true) do |form| %>
+  <% if drill_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(drill_group.errors.count, "error") %> prohibited this drill_group from being saved:</h2>
+
+      <ul>
+      <% drill_group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :drill_group_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :drill_group_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :level %>
+    <%= form.number_field :level, id: :drill_group_level %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_points %>
+    <%= form.number_field :max_points, id: :drill_group_max_points %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :drill_group_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :badge_name %>
+    <%= form.text_field :badge_name, id: :drill_group_badge_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
