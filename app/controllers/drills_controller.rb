@@ -46,7 +46,7 @@ class DrillsController < ApplicationController
   # DELETE /drills/1.json
   def destroy
     @drill.destroy
-      redirect_to drills_url, notice: 'Drill was successfully destroyed.'
+      redirect_to edit_drill_group_path(@drill.drill_group), notice: 'Drill was successfully destroyed.'
   end
 
   private
