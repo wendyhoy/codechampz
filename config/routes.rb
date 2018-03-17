@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   resources :student_drills
   resources :student_drill_groups
   resources :solutions
@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :drill_groups
   resources :users
 
+  resource :session, only: [:new, :create, :delete]
 end
