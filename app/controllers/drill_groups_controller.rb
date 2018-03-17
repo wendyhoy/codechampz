@@ -10,6 +10,7 @@ class DrillGroupsController < ApplicationController
   # GET /drill_groups/1
   # GET /drill_groups/1.json
   def show
+    @drills = @drill_group.drills
   end
 
   # GET /drill_groups/new
@@ -26,38 +27,31 @@ class DrillGroupsController < ApplicationController
   def create
     @drill_group = DrillGroup.new(drill_group_params)
 
-    respond_to do |format|
       if @drill_group.save
-        format.html { redirect_to @drill_group, notice: 'Drill group was successfully created.' }
-        format.json { render :show, status: :created, location: @drill_group }
+        redirect_to @drill_group, notice: 'Drill group was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @drill_group.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
+
   end
 
   # PATCH/PUT /drill_groups/1
   # PATCH/PUT /drill_groups/1.json
   def update
-    respond_to do |format|
+
       if @drill_group.update(drill_group_params)
-        format.html { redirect_to @drill_group, notice: 'Drill group was successfully updated.' }
-        format.json { render :show, status: :ok, location: @drill_group }
+        redirect_to @drill_group, notice: 'Drill group was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @drill_group.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
+
   end
 
   # DELETE /drill_groups/1
   # DELETE /drill_groups/1.json
   def destroy
     @drill_group.destroy
-    respond_to do |format|
-      format.html { redirect_to drill_groups_url, notice: 'Drill group was successfully destroyed.' }
-      format.json { head :no_content }
+      redirect_to drill_groups_url, notice: 'Drill group was successfully destroyed.'
     end
   end
 
