@@ -3,8 +3,6 @@ class StudentDrillGroupsController < ApplicationController
 
   # GET /student_drill_groups
   def index
-    current_user = User.find(3)
-
     @student_drill_groups = StudentDrillGroup.where(user_id: current_user.id).order(created_at: :DESC)
     #
     # @student_drill_groups = StudentDrillGroup.all
@@ -13,8 +11,6 @@ class StudentDrillGroupsController < ApplicationController
 
   # POST /student_drill_groups
   def create
-    current_user = User.find(3)
-
     drill_group = DrillGroup.find params[:drill_group_id]
 
     student_drill_group = StudentDrillGroup.new student_drill_group_params
