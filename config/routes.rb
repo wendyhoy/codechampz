@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: :destroy, shallow: true do
-     resources :student_drill_groups
+    resources :student_drill_groups
      resources :student_drills
    end
 

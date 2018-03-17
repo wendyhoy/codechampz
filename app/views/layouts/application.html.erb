@@ -9,6 +9,56 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <nav class="nav navbar navbar-light bg-light navbar-expand-sm">
+      <a class="navbar-brand" href="/">
+        <%= image_tag 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Question_Mark.svg/1000px-Question_Mark.svg.png', alt: 'logo-icon', style: "width:40px; height: 40px"%>
+      </a>
+
+      <ul class="navbar nav ml-auto">
+      <% if user_signed_in? %>
+
+        <% if current_user.is_admin? %>
+
+          <li class="navbar-item"><%= link_to 'Home', root_path %></li>
+          |
+          <li class="navbar-item"><%= link_to 'Drillz', drill_groups_path %></li>
+          |
+          <li class="navbar-item"><%= link_to 'Users', users_path %></li>
+
+          <% else %>
+
+          <li class="navbar-item"><%= link_to 'My Drillz', student_drill_groups_path %></li>
+          |
+          <li class="navbar-item"><%= link_to 'All Drillz', drill_groups_path %></li>
+          |
+          <li class="navbar-item"><%= link_to 'Leaderboard', leaderboard_path %></li>
+
+          <li class="navbar-item"><span>Hello, <%= current_user.first_name %>!</span></li>
+          <li class="navbar-item"><%= link_to 'Profile', user_path(current_user) %></li>
+          ,
+          <li class="navbar-item"><%= link_to 'Logout', session_path, method: :delete %></li>
+        <% end %>
+
+      <% else %>
+        <li class="navbar-item"><%= link_to 'Sign In', new_session_path %></li>&nbsp;
+        |
+        &nbsp;<li class="navbar-item"><%= link_to 'Sign Up', new_user_path %></li>
+      <% end %>
+      </ul>
+    </nav>
+
+    <div class="container">
+
+      <% if flash[:notice].present? || flash[:alert].present? %>
+      <div class="flash-message">
+        <%= flash[:notice] || flash[:alert] %>
+      </div>
+      <% end %>
+
+      <%= yield %>
+
+    </div>
+
   </body>
 </html>
