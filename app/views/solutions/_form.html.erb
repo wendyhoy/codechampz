@@ -1,10 +1,10 @@
-<%= form_with(model: solution, local: true) do |form| %>
-  <% if solution.errors.any? %>
+<%= form_for [@drill, @solution] do |form| %>
+  <% if @solution.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(solution.errors.count, "error") %> prohibited this solution from being saved:</h2>
+      <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</h2>
 
       <ul>
-      <% solution.errors.full_messages.each do |message| %>
+      <% @solution.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -13,12 +13,7 @@
 
   <div class="field">
     <%= form.label :solution %>
-    <%= form.text_area :solution, id: :solution_solution %>
-  </div>
-
-  <div class="field">
-    <%= form.label :drill_id %>
-    <%= form.text_field :drill_id, id: :solution_drill_id %>
+    <%= form.text_area :solution %>
   </div>
 
   <div class="actions">

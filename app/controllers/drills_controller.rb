@@ -1,15 +1,12 @@
 class DrillsController < ApplicationController
   before_action :set_drill, only: [:show, :edit, :update, :destroy]
-
-  # GET /drills
-  # GET /drills.json
-  def index
-    @drills = Drill.all
-  end
+  before_action :set_drill_group, only: [:new, :create]
 
   # GET /drills/1
   # GET /drills/1.json
   def show
+    @solution = Solution.new
+    @solutions = @drill.solutions.order(created_at: :asc)
   end
 
   # GET /drills/new
@@ -25,40 +22,32 @@ class DrillsController < ApplicationController
   # POST /drills.json
   def create
     @drill = Drill.new(drill_params)
+    @drill.drill_group = @drill_group
 
-    respond_to do |format|
       if @drill.save
-        format.html { redirect_to @drill, notice: 'Drill was successfully created.' }
-        format.json { render :show, status: :created, location: @drill }
+        redirect_to @drill, notice: 'Drill was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @drill.errors, status: :unprocessable_entity }
+        # render :new
       end
-    end
+      
   end
 
   # PATCH/PUT /drills/1
   # PATCH/PUT /drills/1.json
   def update
-    respond_to do |format|
       if @drill.update(drill_params)
-        format.html { redirect_to @drill, notice: 'Drill was successfully updated.' }
-        format.json { render :show, status: :ok, location: @drill }
+        redirect_to @drill, notice: 'Drill was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @drill.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
+
   end
 
   # DELETE /drills/1
   # DELETE /drills/1.json
   def destroy
     @drill.destroy
-    respond_to do |format|
-      format.html { redirect_to drills_url, notice: 'Drill was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to edit_drill_group_path(@drill.drill_group), notice: 'Drill was successfully destroyed.'
   end
 
   private
@@ -69,6 +58,10 @@ class DrillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drill_params
-      params.require(:drill).permit(:question, :drill_group_id)
+      params.require(:drill).permit(:question)
+    end
+
+    def set_drill_group
+      @drill_group = DrillGroup.find params[:drill_group_id]
     end
 end
