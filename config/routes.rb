@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :drills
   resources :drill_groups
   resources :users
-  resources :home, only: [:index, :leaderboard]
 
+  get('/', { to: 'home#index', as: :root })
+  get('/leaderboard', { to: 'home#leaderboard', as: :leaderboard })
+  
 end
