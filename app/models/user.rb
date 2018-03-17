@@ -4,12 +4,12 @@ class User < ApplicationRecord
   has_secure_password
 
 # admin
-  has_many :drill_groups
+  has_many :drill_groups, dependent: :nullify
 
 # students
-  has_many :student_drill_groups
+  has_many :student_drill_groups, dependent: :destroy
 
-  has_many :student_drills
+  has_many :student_drills, dependent: :destroy
 
 # validations
 
