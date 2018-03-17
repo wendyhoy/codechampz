@@ -33,7 +33,7 @@
 
           <ul class="navbar nav">
             <div class="navbar nav">
-              <li class="navbar-item student"><%= link_to 'My Drillz', student_drill_groups_path %></li>
+              <li class="navbar-item student"><%= link_to 'My Drillz', user_student_drill_groups_path(current_user) %></li>
               |
               <li class="navbar-item student"><%= link_to 'All Drillz', drill_groups_path %></li>
               |
