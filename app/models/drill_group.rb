@@ -5,6 +5,6 @@ class DrillGroup < ApplicationRecord
 
   validates :name, presence: true, length: { in: 8..40 }, uniqueness: { case_sensitive: false }
   validates :description, presence: true, length: { minimum: 30 }
-  validates :max_points, presence: true, numericality: { only_integer: true }
+  validates :max_points, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
 end
