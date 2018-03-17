@@ -10,9 +10,9 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       flash[:notice] = "Thank you for signing in!"
       if user.is_admin?
-        redirect_to drills_path
+        redirect_to drill_groups_path
       else
-        redirect_to student_drill_groups_path
+        redirect_to user_student_drill_groups_path(user)
       end
     else
       render :new
