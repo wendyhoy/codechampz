@@ -1,5 +1,6 @@
 class DrillsController < ApplicationController
   before_action :set_drill, only: [:show, :edit, :update, :destroy]
+  before_action :set_drill_group, only: [:new, :create]
 
   # GET /drills/1
   # GET /drills/1.json
@@ -21,11 +22,12 @@ class DrillsController < ApplicationController
   # POST /drills.json
   def create
     @drill = Drill.new(drill_params)
+    @drill.drill_group = @drill_group
 
       if @drill.save
         redirect_to @drill, notice: 'Drill was successfully created.'
       else
-        render :new
+        # render :new
       end
       
   end
@@ -33,7 +35,6 @@ class DrillsController < ApplicationController
   # PATCH/PUT /drills/1
   # PATCH/PUT /drills/1.json
   def update
-
       if @drill.update(drill_params)
         redirect_to @drill, notice: 'Drill was successfully updated.'
       else
@@ -57,6 +58,10 @@ class DrillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drill_params
-      params.require(:drill).permit(:question, :drill_group_id)
+      params.require(:drill).permit(:question)
+    end
+
+    def set_drill_group
+      @drill_group = DrillGroup.find params[:drill_group_id]
     end
 end
