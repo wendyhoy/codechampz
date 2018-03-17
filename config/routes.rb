@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :drills
   resources :drill_groups
   resources :users, except: [:destroy]
-  resource :session, only: [:new, :create, :delete]
+  resource :session, only: [:new, :create, :destroy]
 
   get('/', { to: 'home#index', as: :root })
   get('/leaderboard', { to: 'home#leaderboard', as: :leaderboard })

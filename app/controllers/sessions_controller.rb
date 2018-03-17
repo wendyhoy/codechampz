@@ -19,11 +19,11 @@ class SessionsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   session[:user_id] = nil
-  #   flash[:notice] = 'Signed out!'
-  #   redirect_to root_path
-  # end
+  def destroy
+    session[:user_id] = nil
+    flash[:notice] = 'Signed out!'
+    redirect_to root_path
+  end
 
   private
   def session_params
