@@ -1,6 +1,8 @@
 class SolutionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_drill, except: [:edit]
   before_action :set_solution, only: [:edit, :update, :destroy]
+  before_action :authorize_user!
 
   def new
     @solution = Solution.new
@@ -53,5 +55,12 @@ class SolutionsController < ApplicationController
 
     def set_drill
       @drill = Drill.find params[:drill_id]
+    end
+
+    def authorize_user!
+      unless can?(:manage, @solution)
+        flash[:alert] = "Access Denied!"
+        redirect_to user_student_drill_groups_path(current_user)
+      end
     end
 end

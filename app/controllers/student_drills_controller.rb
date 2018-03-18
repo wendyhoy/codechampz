@@ -1,4 +1,5 @@
 class StudentDrillsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_student_drill, only: [:show, :edit, :update, :destroy]
 
   # GET /student_drills

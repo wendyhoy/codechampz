@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :authorize_user!, except: [:new, :create]
+
 
 
   def index
@@ -49,5 +52,12 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    end
+
+    def authorize_user!
+      unless can?(:manage, @user)
+        flash[:alert] = "Access Denied!"
+        redirect_to user_student_drill_groups_path(current_user)
+      end
     end
 end
