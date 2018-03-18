@@ -6,7 +6,11 @@ class DrillGroupsController < ApplicationController
   # GET /drill_groups
   # GET /drill_groups.json
   def index
-    @drill_groups = DrillGroup.all
+    @drill_groups = DrillGroup.order :level
+    @beginner_group = DrillGroup.where level: 1
+    @intermediate_group = DrillGroup.where level: 2
+    @advanced_group = DrillGroup.where level: 3
+
     if current_user.is_admin?
       render '/admin/drill_groups/index'
     end
