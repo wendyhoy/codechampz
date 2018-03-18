@@ -4,7 +4,6 @@ class StudentDrillGroupsController < ApplicationController
   # GET /student_drill_groups
   def index
     @student_drill_groups = StudentDrillGroup.where(user_id: current_user.id).order(created_at: :DESC)
-
   end
 
 
@@ -32,9 +31,8 @@ class StudentDrillGroupsController < ApplicationController
     redirect_to user_student_drill_groups_path(current_user)
   end
 
-  private
+  def student_drill_group_params
+    params.permit(:user_id, :drill_group_id, :points_awarded, :score)
+  end
 
-    def student_drill_group_params
-      params.permit(:user_id, :drill_group_id, :points_awarded, :score)
-    end
 end
