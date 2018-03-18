@@ -5,17 +5,11 @@ class StudentDrillsController < ApplicationController
   # POST /student_drills
   # POST /student_drills.json
   def create
-    @student_drill = StudentDrill.new(student_drill_params)
+    byebug
+    @student_drill = StudentDrill.new( params[:user_id],  )
+    @student_drill.save
+    # render json: params
 
-    respond_to do |format|
-      if @student_drill.save
-        format.html { redirect_to @student_drill, notice: 'Student drill was successfully created.' }
-        format.json { render :show, status: :created, location: @student_drill }
-      else
-        format.html { render :new }
-        format.json { render json: @student_drill.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
 
@@ -26,7 +20,7 @@ class StudentDrillsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def student_drill_params
-      params.require(:student_drill).permit(:user_id, :drill_id, :is_correct)
-    end
+    # def student_drill_params
+    #   params.require(:student_drill).permit(:answr)
+    # end
 end

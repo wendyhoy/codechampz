@@ -20,7 +20,7 @@
         <td><%= student_drill_group.drill_group_id %></td>
         <td><%= student_drill_group.points_awarded %></td>
         <td><%= student_drill_group.score %></td>
-        <td><%= link_to 'Start', drill_path(student_drill_group) %></td>
+        <td><%= link_to 'Start', drill_path(student_drill_group.drill_group_id) %></td>
         <td><%= link_to "Remove", student_drill_group_path(student_drill_group), method: :delete, data: { confirm: 'Are you sure that you want to delete this product?' } %>
         </td>
       </tr>
