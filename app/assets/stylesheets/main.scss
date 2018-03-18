@@ -25,3 +25,20 @@
   height: 2em;
   font-size: 4em;
 }
+
+.container.drill-groups {
+  border: 1px solid gray;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.card.drill-group {
+  border-color: gray;
+  margin:2em 2em 2em 2em ;
+  width: 220px;
+  height: 220px;
+}
+
+.card-body > .contents {
+  height: 140px;
+}

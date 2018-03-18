@@ -15,7 +15,6 @@ class StudentDrillGroupsController < ApplicationController
     student_drill_group = StudentDrillGroup.new student_drill_group_params
     student_drill_group.drill_group = drill_group
     student_drill_group.user = current_user
-
     if student_drill_group.save
       flash[:notice] = 'Drill group added successfully!'
     else
@@ -36,6 +35,6 @@ class StudentDrillGroupsController < ApplicationController
   private
 
     def student_drill_group_params
-      params.require(:student_drill_group).permit(:user_id, :drill_group_id, :points_awarded, :score)
+      params.permit(:user_id, :drill_group_id, :points_awarded, :score)
     end
 end
