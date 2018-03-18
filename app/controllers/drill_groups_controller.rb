@@ -7,6 +7,11 @@ class DrillGroupsController < ApplicationController
   # GET /drill_groups.json
   def index
     @drill_groups = DrillGroup.all
+    if current_user.is_admin?
+      render '/admin/drill_list'
+    else
+      render
+    end
   end
 
   # GET /drill_groups/1
