@@ -1,4 +1,39 @@
 
+<p id="notice">
+  <%= notice %>
+</p>
+
+<h1> *** ADMIN BELOW *** </h1>
+
+<h1>Drill Groups</h1>
+
+<button>
+  <%= link_to 'Add New Group', new_drill_group_path%>
+</button>
+
+<% @drill_groups.each do |drill_group| %>
+  <div class="card m-3 p-4">
+    <h5 class="card-title">
+      <%= drill_group.name %>
+    </h5>
+    <p class="card-text">
+      <%= drill_group.description %>
+    </p>
+    <div class="group-actions-admin">
+      <button class="group-actions-button">
+        <%= link_to 'Show', drill_group %>
+      </button>
+      <button class="group-actions-button">
+        <%= link_to 'Edit', edit_drill_group_path(drill_group) %>
+      </button>
+      <button class="group-actions-button">
+        <%= link_to 'Destroy', drill_group, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </button>
+    </div>
+  </div>
+  <% end %>
+
+<h1> *** USER BELOW, ADMIN ABOVE *** </h1>
 
 <h1>Drill Groups</h1>
 
