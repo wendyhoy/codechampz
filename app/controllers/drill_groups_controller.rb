@@ -6,6 +6,7 @@ class DrillGroupsController < ApplicationController
   # GET /drill_groups
   # GET /drill_groups.json
   def index
+    @drill_groups = DrillGroup.order :level
     @beginner_drill_groups = DrillGroup.where(level: 1).order(:name)
     @intermediate_drill_groups = DrillGroup.where(level: 2).order(:name)
     @advanced_drill_groups = DrillGroup.where(level: 3).order(:name)
