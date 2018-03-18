@@ -11,7 +11,8 @@ Rails.application.routes.draw do
      resources :student_drills
    end
 
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: [:create, :destroy]
+  get('/sign_in', { to: 'sessions#new' })
 
   get('/', { to: 'home#index', as: :root })
   get('/leaderboard', { to: 'home#leaderboard', as: :leaderboard })
