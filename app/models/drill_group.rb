@@ -2,7 +2,7 @@ class DrillGroup < ApplicationRecord
   belongs_to :user
 
   has_many :drills, dependent: :destroy
-
+  has_many :student_drill_groups, dependent: :nullify
   has_many :students, through: :student_drill_groups, source: :user
 
   validates :level,

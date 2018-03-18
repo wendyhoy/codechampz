@@ -2,8 +2,8 @@ class StudentDrillGroup < ApplicationRecord
   belongs_to :user
   belongs_to :drill_group
 
-  validates :points_awarded, {
-    numericality: {
+  validates :points_awarded, :times_taken, {
+    numericality: { 
       only_integer: true,
       greater_than_or_equal_to: 0
     }
@@ -16,7 +16,5 @@ class StudentDrillGroup < ApplicationRecord
       less_than_or_equal_to: 100
     }
   }
-
-
 
 end

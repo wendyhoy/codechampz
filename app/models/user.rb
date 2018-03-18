@@ -7,9 +7,9 @@ class User < ApplicationRecord
   has_many :drill_groups, dependent: :nullify
 
 # students
-  has_many :student_drill_groups, dependent: :destroy
+  has_many :student_drill_groups, dependent: :nullify
 
-  has_many :student_drills, dependent: :destroy
+  has_many :student_drills, dependent: :nullify
 
 # validations
 

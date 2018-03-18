@@ -1,22 +1,10 @@
-<%= form_for [@drill, @solution] do |form| %>
-  <% if @solution.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</h2>
+<div class="form-group">
 
-      <ul>
-      <% @solution.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+  <%= simple_form_for [@drill, @solution] do |form| %>
+
+    <%= f.input :solution, class: 'form-control' %>
+
+    <%= f.submit 'Save', class: 'btn btn-outline-primary' %>
+    
   <% end %>
-
-  <div class="field">
-    <%= form.label :solution %>
-    <%= form.text_area :solution %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
