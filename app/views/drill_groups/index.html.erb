@@ -25,14 +25,18 @@
         <td><%= drill_group.level %></td>
         <td><%= drill_group.max_points %></td>
         <td><%= drill_group.badge_name %></td>
-        <td><%= link_to 'Show', drill_group %></td>
-        <td><%= link_to 'Edit', edit_drill_group_path(drill_group) %></td>
-        <td><%= link_to 'Destroy', drill_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to(
+          'Add Drill Group',
+          user_student_drill_groups_path({
+            user_id: current_user,
+            drill_group_id: drill_group.id
+            }),
+            method: :post
+            ) %></td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Drill Group', new_drill_group_path %>
