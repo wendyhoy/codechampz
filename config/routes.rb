@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   resources :users, except: :destroy, shallow: true do
     resources :student_drill_groups
-     resources :student_drills
+     resources :student_drills do
+      get('/next', { to: 'student_drill#next', as: :next })
+     end
    end
 
   resource :session, only: [:create, :destroy]
@@ -17,5 +19,6 @@ Rails.application.routes.draw do
 
   get('/', { to: 'home#index', as: :root })
   get('/leaderboard', { to: 'home#leaderboard', as: :leaderboard })
+
 
 end

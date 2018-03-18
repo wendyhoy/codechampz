@@ -1,23 +1,35 @@
-<div>
-  <strong>Drill group:</strong>
-  <%= @drill.drill_group.name %>
+<div class="drill-group-header-admin d-flex">
+  <h3>Drill Group:
+    <%= @drill.drill_group.name %>
+  </h3>
 </div>
 
-<div>
-  <strong>Question:</strong>
-  <%= @drill.question %>
+<div class="drill-group-info-admin d-flex my-2">
+  <div class="mr-3">
+    <strong>Level:</strong>
+    <%= @drill.drill_group.friendly_level %>
+  </div>
+
+  <div class="mr-3">
+    <strong>Max points:</strong>
+    <%= @drill.drill_group.max_points %>
+  </div>
+
+  <div class="mr-3">
+    <strong>Badge name:</strong>
+    <%= @drill.drill_group.badge_name %>
+  </div>
 </div>
 
-<div>
-  <strong>Solutions:</strong>
-  <ul>
-    <% @drill.solutions.each do |s| %>
-      <li>
-        <%= s.solution %>
-      </li>
-      <% end %>
-  </ul>
+<hr />
+<br />
+
+<div class="d-flex">
+
+  <h3><%= @drill.question %></h3>
 </div>
+
+<br />
 
 <%= simple_form_for :attempt,
   url: user_student_drills_path(current_user),
@@ -26,5 +38,32 @@
   <%= hidden_field_tag 'student_drill_group_id', @student_drill_group_id %>
   <%= hidden_field_tag 'drill_id', @drill.id %>
   <%= f.input :answer  %>
-  <%= f.submit "Submit" %>
+  <%= f.submit "Submit", class: "btn btn-outline-primary", id: "attempt-btn" %>
+<% end %>
+
+<br />
+
+
+<% if @answered %>
+  <div>
+    <hr />
+
+    <h3>
+      <% if @correct %>
+        Correct! Good job!
+      <% else %>
+          Not quite! Keep working on it!
+      <% end %>
+    </h3>
+    <br />
+    <strong>Solutions:</strong>
+    <ul>
+      <% @drill.solutions.each do |s| %>
+        <li>
+          <%= s.solution %>
+        </li>
+      <% end %>
+    </ul>
+    <button class="btn btn-outline-primary">Next</button>
+  </div>
 <% end %>
