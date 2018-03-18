@@ -9,8 +9,6 @@ class DrillGroupsController < ApplicationController
     @drill_groups = DrillGroup.all
     if current_user.is_admin?
       render '/admin/drill_groups/index'
-    else
-      render
     end
   end
 
@@ -18,15 +16,7 @@ class DrillGroupsController < ApplicationController
   # GET /drill_groups/1.json
   def show
     @drills = @drill_group.drills
-    @friendly_level = ''
-    
-    if @drill_group.level == 1
-      @friendly_level = 'Beginner'
-    elsif @drill_group.level == 2
-      @friendly_level = 'Intermediate'
-    elsif @drill_group.level == 3
-      @friendly_level = 'Advanced'
-    end
+    @friendly_level = @drill_group.friendly_level
 
     if current_user.is_admin?
       render '/admin/drill_groups/show'

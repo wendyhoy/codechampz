@@ -9,21 +9,15 @@ class StudentDrillGroupsController < ApplicationController
 
   # POST /student_drill_groups
   def create
+    drill_group = DrillGroup.find params[:drill_group_id]
 
-    if StudentDrillGroup.where(user_id: current_user,
-      drill_group_id: params[:drill_group_id]).present?
-      flash[:alert] = 'The drill group is already existed'
+    student_drill_group = StudentDrillGroup.new student_drill_group_params
+    student_drill_group.drill_group = drill_group
+    student_drill_group.user = current_user
+    if student_drill_group.save
+      flash[:notice] = 'Drill group added successfully!'
     else
-      drill_group = DrillGroup.find params[:drill_group_id]
-      student_drill_group = StudentDrillGroup.new(
-        user: current_user,
-        drill_group: drill_group
-      )
-      if student_drill_group.save
-        flash[:notice] = 'Drill group added successfully!'
-      else
-        flash[:alert] = 'Sorry, couln\'t add the Drill group'
-      end
+      flash[:alert] = 'Sorry, couln\'t add the Drill group'
     end
 
     redirect_to user_student_drill_groups_path(current_user)
@@ -37,5 +31,8 @@ class StudentDrillGroupsController < ApplicationController
     redirect_to user_student_drill_groups_path(current_user)
   end
 
+  def student_drill_group_params
+    params.permit(:user_id, :drill_group_id, :points_awarded, :score)
+  end
 
 end
