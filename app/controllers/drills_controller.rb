@@ -66,7 +66,7 @@ class DrillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drill_params
-      params.require(:drill).permit(:question, solutions_attributes: [:id, :solution])
+      params.require(:drill).permit(:question, solutions_attributes: [:id, :solution, :_destroy])
     end
 
     def set_drill_group

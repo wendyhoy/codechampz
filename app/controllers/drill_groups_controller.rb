@@ -18,7 +18,7 @@ class DrillGroupsController < ApplicationController
   # GET /drill_groups/1.json
   def show
     @drill = Drill.new
-    3.times  { @drill.solutions.build }
+    1.times  { @drill.solutions.build }
 
     @drills = @drill_group.drills
     @friendly_level = @drill_group.friendly_level

@@ -1,4 +1,3 @@
-
 <%= simple_form_for [@drill_group, @drill] do |f| %>
 
   <div class="form-group">
@@ -6,9 +5,12 @@
   </div>
 
   <div class="form-group">
-    <%= f.simple_fields_for :solutions do |s_form| %>
-        <%= s_form.input :solution, as: :string, class: 'form-control' %>
-          <% end %>
+    <%= f.simple_fields_for :solutions do |s| %>
+      <%= render 'admin/drill_groups/solution_fields', :f => s %>
+        <% end %>
+          <div class="links">
+            <%= link_to_add_association 'Add Solution', f, :solutions, { partial: 'admin/drill_groups/solution_fields', class: 'btn btn-light btn-sm my-1' } %>
+          </div>
   </div>
 
   <div class="form-group">
