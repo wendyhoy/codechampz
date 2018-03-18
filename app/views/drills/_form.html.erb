@@ -1,22 +1,9 @@
-<%= form_for [@drill_group, @drill] do |form| %>
-  <% if @drill.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@drill.errors.count, "error") %> prohibited this drill from being saved:</h2>
+<div class="form-group">
+  <%= simple_form_for [@drill_group, @drill] do |f| %>
 
-      <ul>
-      <% @drill.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <%= f.input :question, class: 'form-control' %>
+
+    <%= f.submit 'Save', class: 'btn btn-outline-primary' %>
+
   <% end %>
-
-  <div class="form-group">
-    <%= form.label :question %>
-    <%= form.text_area :question, class: 'form-control' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Save', class: 'btn btn-outline-primary' %>
-  </div>
-<% end %>
+</div>
