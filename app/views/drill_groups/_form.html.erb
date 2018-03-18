@@ -1,47 +1,58 @@
-<%= form_with(model: drill_group, local: true) do |form| %>
-  <% if drill_group.errors.any? %>
+<%= form_for @drill_group do |form| %>
+  <% if @drill_group.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(drill_group.errors.count, "error") %> prohibited this drill_group from being saved:</h2>
+      <h2>
+        <%= pluralize(@drill_group.errors.count, "error") %> prohibited this drill_group from being saved:</h2>
 
       <ul>
-      <% drill_group.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @drill_group.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+          <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :drill_group_name %>
-  </div>
+      <div class="form-group">
+        <%= form.label :name %>
+          <%= form.text_field :name, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :drill_group_description %>
-  </div>
+      <div class="form-group">
+        <%= form.label :description %>
+          <%= form.text_area :description, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :level %>
-    <%= form.number_field :level, id: :drill_group_level %>
-  </div>
+      <div class="form-group">
+        <div class="form-check form-check-inline">
+          <%= form.radio_button :level, "1", checked: (@drill_group.level == 1 ? true : false) %>
+            <%= label :level, 'Beginner', class: 'form-check-label' %>
+        </div>
 
-  <div class="field">
-    <%= form.label :max_points %>
-    <%= form.number_field :max_points, id: :drill_group_max_points %>
-  </div>
+        <div class="form-check form-check-inline">
+          <%= form.radio_button :level, "2", checked: (@drill_group.level == 2 ? true : false), class: 'form-check-input', type: 'radio' %>
+            <%= label :level, 'Intermediate', class: 'form-check-label' %>
+        </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :drill_group_user_id %>
-  </div>
+        <div class="form-check form-check-inline">
+          <%= form.radio_button :level, "3", checked: (@drill_group.level == 3 ? true : false), class: 'form-check-input' %>
+            <%= label :level, 'Advanced', class: 'form-check-label' %>
+        </div>
 
-  <div class="field">
-    <%= form.label :badge_name %>
-    <%= form.text_field :badge_name, id: :drill_group_badge_name %>
-  </div>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+      <div class="form-group">
+        <%= form.label :max_points %>
+          <%= form.number_field :max_points, class: 'form-control', min: '0' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :badge_name %>
+          <%= form.text_field :badge_name, class: 'form-control' %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit 'Save', class: 'btn btn-outline-primary' %>
+      </div>
+      <% end %>

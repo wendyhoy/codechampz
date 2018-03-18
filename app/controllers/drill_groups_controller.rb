@@ -26,6 +26,7 @@ class DrillGroupsController < ApplicationController
   # POST /drill_groups.json
   def create
     @drill_group = DrillGroup.new(drill_group_params)
+    @drill_group.user = current_user
 
       if @drill_group.save
         redirect_to @drill_group, notice: 'Drill group was successfully created.'
