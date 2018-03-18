@@ -1,6 +1,9 @@
 class DrillsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_drill, only: [:show, :edit, :update, :destroy]
   before_action :set_drill_group, only: [:new, :create]
+  before_action :authorize_user!, except: :show
+
 
   # GET /drills/1
   # GET /drills/1.json
@@ -29,7 +32,7 @@ class DrillsController < ApplicationController
       else
         # render :new
       end
-      
+
   end
 
   # PATCH/PUT /drills/1
@@ -63,5 +66,12 @@ class DrillsController < ApplicationController
 
     def set_drill_group
       @drill_group = DrillGroup.find params[:drill_group_id]
+    end
+
+    def authorize_user!
+      unless can?(:manage, @drill)
+        flash[:alert] = "Access Denied!"
+        redirect_to user_student_drill_groups_path(current_user)
+      end
     end
 end

@@ -1,5 +1,7 @@
 class DrillGroupsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_drill_group, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user!, except: [:show, :index]
 
   # GET /drill_groups
   # GET /drill_groups.json
@@ -63,5 +65,12 @@ class DrillGroupsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def drill_group_params
       params.require(:drill_group).permit(:name, :description, :level, :max_points, :user_id, :badge_name)
+    end
+
+    def authorize_user!
+      unless can?(:manage, @drill_group)
+        flash[:alert] = "Access Denied!"
+        redirect_to user_student_drill_groups_path(current_user)
+      end
     end
 end

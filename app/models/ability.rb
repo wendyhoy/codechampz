@@ -28,5 +28,14 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+
+    can :read, StudentDrillGroup do |student_drill_group|
+      student_drill_group.user == user
+    end
+
+    can :read, StudentDrills do |student_drill|
+      student_drill.user == user
+    end
+    
   end
 end
