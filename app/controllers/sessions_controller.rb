@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
         redirect_to user_student_drill_groups_path(user)
       end
     else
+      flash.now[:alert] = 'Wrong email or password!'
       render :new
     end
   end
