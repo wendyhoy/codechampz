@@ -4,7 +4,6 @@ class StudentDrillsController < ApplicationController
 
   # this gets called whenever a student completes a question
   def create
-    # byebug
     # get the user's attempted answer, drill, and current student drill group
     @attempted_answer = student_drill_params[:answer]
     @drill = Drill.find params[:drill_id]
