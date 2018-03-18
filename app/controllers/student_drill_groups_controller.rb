@@ -21,7 +21,7 @@ class StudentDrillGroupsController < ApplicationController
       flash[:alert] = 'Sorry, couln\'t add the Drill group'
     end
 
-    redirect_to user_student_drill_groups_path
+    redirect_to user_student_drill_groups_path(current_user)
 
   end
 
@@ -29,7 +29,7 @@ class StudentDrillGroupsController < ApplicationController
   def destroy
     student_drill_group = StudentDrillGroup.find params[:id]
     student_drill_group.destroy
-    redirect_to user_student_drill_groups_path
+    redirect_to user_student_drill_groups_path(current_user)
   end
 
   private
