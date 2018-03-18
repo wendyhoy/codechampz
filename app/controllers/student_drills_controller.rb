@@ -4,32 +4,41 @@ class StudentDrillsController < ApplicationController
 
   # this gets called whenever a student completes a question
   def create
-
+    # byebug
     # get the user's attempted answer, drill, and current student drill group
-    attempted_answer = student_drill_params[:answer]
-    drill = Drill.find params[:drill_id]
-    student_drill_group = StudentDrillGroup.find params[:student_drill_group_id]
+    @attempted_answer = student_drill_params[:answer]
+    @drill = Drill.find params[:drill_id]
+    @student_drill_group = StudentDrillGroup.find params[:student_drill_group_id]
 
     # check if the attempted answer matches one of the solutions in the drill
-    solutions_arr = drill.solutions.map { |s| s.solution }
-    correct = solutions_arr.include? attempted_answer
+    solutions_arr = @drill.solutions.map { |s| s.solution }
+    correct = solutions_arr.include? @attempted_answer
 
     if correct
-      solutions_str = solutions_arr.join(', ')
-      flash[:notice] = "That was correct! Correct solutions: #{solutions_str}"
+      @correct = true
     else
-      flash[:alert] = 'Sorry, that was incorrect.'
+      @correct = false
     end
 
     # save whether the user answered the drill correctly in the
     # StudentDrill table
     student_drill = StudentDrill.new(
       user: current_user,
-      drill: drill,
+      drill: @drill,
       is_correct: correct
     )
 
     student_drill.save
+
+    @answered = true
+
+    render 'drills/show'
+  end
+
+  def next
+
+    drill = Drill.find params[:drill_id]
+    student_drill_group = StudentDrillGroup.find params[:sdgid]
 
     # find the next drill in the drill group
     next_drill_index = 0
@@ -65,17 +74,17 @@ class StudentDrillsController < ApplicationController
       student_drill_group.save
 
       # redirect the user to their drills page
-      flash[:notice] = "Your current score: #{points_awarded} points, #{percentage}%. Your best score: #{highest_points} points, #{highest_score}%."
+      flash[:notice] = "You scored: #{points_awarded} points, #{percentage}%. Your best score: #{highest_points} points, #{highest_score}%."
       redirect_to user_student_drill_groups_path(current_user)
     else
       # redirect to the next drill in the drill group
       redirect_to drill_path({
         id: drill.drill_group.drills[next_drill_index],
-        sdgid: params[:student_drill_group_id]
+        sdgid: student_drill_group.id
       })
     end
-  end
 
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
