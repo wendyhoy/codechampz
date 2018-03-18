@@ -1,6 +1,13 @@
 class SessionsController < ApplicationController
 
   def new
+    if current_user.present?
+      if current_user.is_admin?
+        redirect_to drill_groups_path
+      else
+        redirect_to user_student_drill_groups_path(current_user)
+      end
+    end
   end
 
   def create
