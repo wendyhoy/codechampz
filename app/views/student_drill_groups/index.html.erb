@@ -21,8 +21,10 @@
         <td><%= student_drill_group.points_awarded %></td>
         <td><%= student_drill_group.score %></td>
         <td>
-          <%= link_to 'Start', drill_path(
-            DrillGroup.find(student_drill_group.drill_group_id).drills.first
+          <%= link_to 'Start',
+            drill_path(
+              id: DrillGroup.find(student_drill_group.drill_group_id).drills.first,
+              sdgid: student_drill_group.id
             )
           %>
         </td>

@@ -2,22 +2,23 @@ class StudentDrillsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_student_drill, only: [:show, :edit, :update, :destroy]
 
-
-  # POST /student_drills
-  # POST /student_drills.json
+  # this gets called whenever a student completes a question
   def create
 
-    # get the users attempted answer and drill
+    # get the user's attempted answer, drill, and current student drill group
     attempted_answer = student_drill_params[:answer]
     drill = Drill.find params[:drill_id]
+    student_drill_group = StudentDrillGroup.find params[:student_drill_group_id]
 
     # check if the attempted answer matches one of the solutions in the drill
-    correct = false
-    drill.solutions.each do |solution|
-      if solution.solution == attempted_answer
-        correct = true
-        break
-      end
+    solutions_arr = drill.solutions.map { |s| s.solution }
+    correct = solutions_arr.include? attempted_answer
+
+    if correct
+      solutions_str = solutions_arr.join(', ')
+      flash[:notice] = "That was correct! Correct solutions: #{solutions_str}"
+    else
+      flash[:alert] = 'Sorry, that was incorrect.'
     end
 
     # save whether the user answered the drill correctly in the
@@ -32,19 +33,42 @@ class StudentDrillsController < ApplicationController
 
     # find the next drill in the drill group
     next_drill_index = 0
-    drill.drill_group.drills.each_with_index do |d,i|
+    drill_group = drill.drill_group
+    drill_list = drill_group.drills
+
+    drill_list.each_with_index do |d,i|
       if d.id == drill.id
         next_drill_index = i+1
         break
       end
     end
 
-    if next_drill_index >= drill.drill_group.drills.length
-      # finished the drill group
+    # check if the user's finished the drill group
+    total_drills = drill_list.length
+    if next_drill_index >= total_drills
+
+      # the user is finished, update the points_awarded and score
+      answers = StudentDrill.where(user: current_user).order(created_at: :desc).limit(total_drills)
+      num_correct = answers.count { |answer| answer.is_correct }
+
+      points_per_drill = drill_group.max_points / total_drills
+      points_awarded = points_per_drill * num_correct
+      percentage = 100 * points_awarded / drill_group.max_points 
+
+      student_drill_group.points_awarded = points_awarded
+      student_drill_group.score = percentage
+
+      student_drill_group.save
+
+      # redirect the user to their drills page
+      flash[:notice] = "Points Awarded: #{points_awarded}, Score: #{percentage}"
       redirect_to user_student_drill_groups_path(current_user)
     else
       # redirect to the next drill in the drill group
-      redirect_to drill_path(drill.drill_group.drills[next_drill_index])
+      redirect_to drill_path({
+        id: drill.drill_group.drills[next_drill_index],
+        sdgid: params[:student_drill_group_id]
+      })
     end
   end
 
