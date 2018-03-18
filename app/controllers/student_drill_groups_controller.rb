@@ -1,11 +1,10 @@
 class StudentDrillGroupsController < ApplicationController
-  # before_action :set_student_drill_group, only: [:show, :edit, :update, :destroy]
+
 
   # GET /student_drill_groups
   def index
     @student_drill_groups = StudentDrillGroup.where(user_id: current_user.id).order(created_at: :DESC)
-    #
-    # @student_drill_groups = StudentDrillGroup.all
+
   end
 
 
@@ -23,17 +22,15 @@ class StudentDrillGroupsController < ApplicationController
       flash[:alert] = 'Sorry, couln\'t add the Drill group'
     end
 
-    redirect_to student_drill_groups_path
+    redirect_to user_student_drill_groups_path
 
   end
-
-
 
   # DELETE /student_drill_groups/1
   def destroy
     student_drill_group = StudentDrillGroup.find params[:id]
     student_drill_group.destroy
-    redirect_to student_drill_groups_path
+    redirect_to user_student_drill_groups_path
   end
 
   private
