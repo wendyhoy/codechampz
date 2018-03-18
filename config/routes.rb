@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: :destroy, shallow: true do
-     resources :student_drill_groups
+    resources :student_drill_groups
      resources :student_drills
    end
 
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: [:create, :destroy]
+  get('/sign_in', { to: 'sessions#new' })
 
   get('/', { to: 'home#index', as: :root })
   get('/leaderboard', { to: 'home#leaderboard', as: :leaderboard })
