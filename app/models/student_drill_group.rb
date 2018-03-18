@@ -14,6 +14,6 @@ class StudentDrillGroup < ApplicationRecord
     }
   }
 
-
+  validates :user_id, uniqueness: { scope: :drill_group_id }
 
 end
