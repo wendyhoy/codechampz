@@ -55,15 +55,31 @@
           Not quite! Keep working on it!
       <% end %>
     </h3>
+
+    <div class="card my-3 p-3">
+      <%= @attempted_answer %>
+    </div>
+    <hr />
     <br />
-    <strong>Solutions:</strong>
-    <ul>
+
+    <h4>Accepted Solutions:</h4>
+
+    <div>
       <% @drill.solutions.each do |s| %>
-        <li>
+        <div class="card my-3 p-3">
           <%= s.solution %>
-        </li>
+        </div>
       <% end %>
-    </ul>
-    <button class="btn btn-outline-primary">Next</button>
+    </div>
+
+    <%= link_to 'Next',
+      next_path(
+        drill_id: @drill.id,
+        sdgid: @student_drill_group.id
+      ),
+      class: "btn btn-outline-primary"
+    %>
+    <br />
+    <br />
   </div>
 <% end %>

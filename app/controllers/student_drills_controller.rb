@@ -6,13 +6,13 @@ class StudentDrillsController < ApplicationController
   def create
     # byebug
     # get the user's attempted answer, drill, and current student drill group
-    attempted_answer = student_drill_params[:answer]
+    @attempted_answer = student_drill_params[:answer]
     @drill = Drill.find params[:drill_id]
-    # student_drill_group = StudentDrillGroup.find params[:student_drill_group_id]
+    @student_drill_group = StudentDrillGroup.find params[:student_drill_group_id]
 
     # check if the attempted answer matches one of the solutions in the drill
     solutions_arr = @drill.solutions.map { |s| s.solution }
-    correct = solutions_arr.include? attempted_answer
+    correct = solutions_arr.include? @attempted_answer
 
     if correct
       @correct = true
@@ -36,8 +36,9 @@ class StudentDrillsController < ApplicationController
   end
 
   def next
+
     drill = Drill.find params[:drill_id]
-    student_drill_group = StudentDrillGroup.find params[:student_drill_group_id]
+    student_drill_group = StudentDrillGroup.find params[:sdgid]
 
     # find the next drill in the drill group
     next_drill_index = 0
@@ -79,7 +80,7 @@ class StudentDrillsController < ApplicationController
       # redirect to the next drill in the drill group
       redirect_to drill_path({
         id: drill.drill_group.drills[next_drill_index],
-        sdgid: params[:student_drill_group_id]
+        sdgid: student_drill_group.id
       })
     end
 
