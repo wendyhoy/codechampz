@@ -1,5 +1,6 @@
 class DrillGroup < ApplicationRecord
   belongs_to :user
+  before_save :capitalize_name
 
   has_many :drills, dependent: :destroy
 
@@ -19,6 +20,10 @@ class DrillGroup < ApplicationRecord
     elsif level == 3
       'Advanced'
     end
+  end
+
+  def capitalize_name
+    name.capitalize!
   end
 
 end
