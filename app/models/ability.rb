@@ -33,9 +33,12 @@ class Ability
       student_drill_group.user == user
     end
 
-    can :read, StudentDrills do |student_drill|
+    can :read, StudentDrill do |student_drill|
       student_drill.user == user
     end
-    
+
+    can :manage, User do |selected_user|
+      selected_user == user
+    end
   end
 end
