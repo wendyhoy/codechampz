@@ -11,6 +11,7 @@ class DrillsController < ApplicationController
     @solution = Solution.new
     @solutions = @drill.solutions.order(created_at: :asc)
     @student_drill_group_id = params[:sdgid]
+    @answered = false
   end
 
   # GET /drills/new
