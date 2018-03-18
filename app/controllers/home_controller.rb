@@ -3,7 +3,11 @@ class HomeController < ApplicationController
 
   def index
     if current_user.present?
-      redirect_to user_student_drill_groups_path(current_user)
+      if current_user.is_admin?
+        redirect_to drill_groups_path
+      else
+        redirect_to user_student_drill_groups_path(current_user)
+      end
     end
   end
 
