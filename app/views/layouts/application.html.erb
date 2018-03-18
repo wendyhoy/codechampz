@@ -11,17 +11,13 @@
   <body>
 
     <nav class="nav navbar navbar-light bg-light navbar-expand-sm justify-content-between">
-      <div class="logo">
-        <a class="navbar-brand" href="/">
+      <div class="logo navbar-brand">
           <%= image_tag 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Question_Mark.svg/1000px-Question_Mark.svg.png', alt: 'logo-icon', style: "width:40px; height: 40px;"%>
-        </a>
       </div>
       <% if user_signed_in? %>
 
         <% if current_user.is_admin? %>
           <ul class="navbar nav">
-            <li class="navbar-item admin"><%= link_to 'Home', root_path %></li>
-            |
             <li class="navbar-item admin"><%= link_to 'Drillz', drill_groups_path %></li>
             |
             <li class="navbar-item admin"><%= link_to 'Users', users_path %></li>
