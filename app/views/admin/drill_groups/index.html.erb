@@ -1,27 +1,90 @@
 <h1>Drill Groups</h1>
 
-<button>
+<button class="my-3">
   <%= link_to 'Add New Group', new_drill_group_path%>
 </button>
 
-<% @drill_groups.each do |drill_group| %>
-  <div class="card m-3 p-4">
-    <h5 class="card-title">
-      <%= drill_group.name %>
-    </h5>
-    <p class="card-text">
-      <%= drill_group.description %>
-    </p>
-    <div class="group-actions-admin">
-      <button class="group-actions-button">
-        <%= link_to 'Show', drill_group %>
-      </button>
-      <button class="group-actions-button">
-        <%= link_to 'Edit', edit_drill_group_path(drill_group) %>
-      </button>
-      <button class="group-actions-button">
-        <%= link_to 'Destroy', drill_group, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </button>
+
+<% unless @beginner_drill_groups.blank? %>
+
+  <h3>Beginner</h3>
+
+  <% @beginner_drill_groups.each do |bdg| %>
+    <div class="card m-3 p-4">
+      <h5 class="card-title">
+        <%= bdg.name %>
+      </h5>
+      <p class="card-text">
+        <%= bdg.description %>
+      </p>
+      <div class="group-actions-admin">
+        <button class="group-actions-button">
+          <%= link_to 'Show', bdg %>
+        </button>
+        <button class="group-actions-button">
+          <%= link_to 'Edit', edit_drill_group_path(bdg) %>
+        </button>
+        <button class="group-actions-button">
+          <%= link_to 'Destroy', bdg, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </button>
+      </div>
     </div>
-  </div>
-  <% end %>
+    <% end %>
+
+      <% end %>
+
+        <% unless @intermediate_drill_groups.blank? %>
+
+          <h3>Intermediate</h3>
+
+          <% @intermediate_drill_groups.each do |idg| %>
+            <div class="card m-3 p-4">
+              <h5 class="card-title">
+                <%= idg.name %>
+              </h5>
+              <p class="card-text">
+                <%= idg.description %>
+              </p>
+              <div class="group-actions-admin">
+                <button class="group-actions-button">
+                  <%= link_to 'Show', idg %>
+                </button>
+                <button class="group-actions-button">
+                  <%= link_to 'Edit', edit_drill_group_path(idg) %>
+                </button>
+                <button class="group-actions-button">
+                  <%= link_to 'Destroy', idg, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </button>
+              </div>
+            </div>
+            <% end %>
+
+              <% end %>
+
+      <% unless @advanced_drill_groups.blank? %>
+      
+        <h3>Advanced</h3>
+      
+        <% @advanced_drill_groups.each do |adg| %>
+          <div class="card m-3 p-4">
+            <h5 class="card-title">
+              <%= adg.name %>
+            </h5>
+            <p class="card-text">
+              <%= adg.description %>
+            </p>
+            <div class="group-actions-admin">
+              <button class="group-actions-button">
+                <%= link_to 'Show', adg %>
+              </button>
+              <button class="group-actions-button">
+                <%= link_to 'Edit', edit_drill_group_path(adg) %>
+              </button>
+              <button class="group-actions-button">
+                <%= link_to 'Destroy', adg, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </button>
+            </div>
+          </div>
+          <% end %>
+      
+            <% end %>

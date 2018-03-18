@@ -5,4 +5,6 @@ class Drill < ApplicationRecord
 
   validates :question, presence: true, uniqueness: { scope: :drill_group, case_sensitive: false }
 
+  accepts_nested_attributes_for :solutions, allow_destroy: true
+
 end
