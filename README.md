@@ -1,18 +1,21 @@
 # CodeZen
 
-A Rails application to test your coding skillz! Check it out on Heroku: https://codezzen.herokuapp.com/.  Or to run the app, start the server with 'rails s' and go to http://localhost:3000/.
+A Rails application to test your coding skillz! Check it out on Heroku: https://codezzen.herokuapp.com/.  Or to run the app, do the following:
+
+* Clone or download the repository
+* Run 'bundle'
+* Run 'rails db:create'
+* Run 'rails db:migrate'
+* Run 'rails db:seed' (optional)
+* Start the server with 'rails s' and go to http://localhost:3000/.
 
 
 ## Technologies Used
 
 * Ruby on Rails
-
 * Bootstrap
-
 * Simple Form
-
 * CanCanCan
-
 * Cocoon
 
 
