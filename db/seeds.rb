@@ -393,7 +393,7 @@ d.save
 
 # DRILL GROUP - JAVASCRIPT LANGUAGE LEVEL 1
 g = DrillGroup.create(
-  name: 'Javascript Language',
+  name: 'JS Language',
   description: 'Tests your knowledge of Ruby Language',
   level: 1,
   max_points: 1000,
@@ -517,7 +517,7 @@ d.save
 
 # DRILL GROUP - JAVASCRIPT LANGUAGE LEVEL 2
 g = DrillGroup.create(
-  name: 'Javascript Language',
+  name: 'JS Language',
   description: 'Tests your knowledge of Ruby Language',
   level: 2,
   max_points: 1000,
@@ -644,7 +644,7 @@ d.save
 
 # DRILL GROUP - JAVASCRIPT LANGUAGE LEVEL 3
 g = DrillGroup.create(
-  name: 'Javascript Language',
+  name: 'JS Language',
   description: 'Tests your knowledge of Ruby Language',
   level: 3,
   max_points: 1000,
