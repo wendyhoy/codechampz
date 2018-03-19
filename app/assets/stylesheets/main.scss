@@ -7,6 +7,11 @@ body * {
   border-color: rgba(30, 30, 30, 0.1) !important;
 }
 
+.green {
+  color: white;
+  background-color: #798C70;
+}
+
 .btn-outline-light{
   color: #798C70;
   border-color: #798C70;
@@ -74,4 +79,10 @@ body * {
 
 .help-block {
   color: #d30008;
+}
+
+// LEADERBOARD
+
+.leaderboard-current-user {
+  font-size: 1.4em;
 }
