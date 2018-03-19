@@ -24,7 +24,7 @@
         </div>
         <div class="start-remove d-flex justify-content-around">
           <%= link_to 'Start', drill_path(
-            id: dg.drills[drills.length-1].id,
+            id: dg.drills[0].id,
             sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
             class: 'btn btn-outline-secondary' %>
           <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
@@ -60,7 +60,7 @@
         </div>
         <div class="start-remove d-flex justify-content-around">
           <%= link_to 'Start', drill_path(
-            id: dg.drills[drills.length-1].id,
+            id: dg.drills[0].id,
             sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
             class: 'btn btn-outline-secondary' %>
           <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
@@ -96,7 +96,7 @@
         </div>
         <div class="start-remove d-flex justify-content-around">
           <%= link_to 'Start', drill_path(
-            id: dg.drills[drills.length-1].id,
+            id: dg.drills[0].id,
             sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
             class: 'btn btn-outline-secondary' %>
           <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
