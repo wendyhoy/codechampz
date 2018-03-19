@@ -2,7 +2,9 @@ body {
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
 }
-
+body * {
+  border-color: rgba(30, 30, 30, 0.1) !important;
+}
 .btn-outline-light{
   color: #798C70;
   border-color: #798C70;
