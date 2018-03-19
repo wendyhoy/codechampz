@@ -72,7 +72,11 @@ A Rails application to test your coding skillz! To run the app, start the server
 
 ### Kealy
 
-* Put your contributions here
+* Added validations for drill, drill group and solution
+* Implemented CRUD for drill groups, drill and solution controllers
+* Styled drill groups, drill and solutions CUD views, including nested forms
+* Implemented user badges and points
+* With Wendy, implemented leaderboard
 
 
 ### Metika
