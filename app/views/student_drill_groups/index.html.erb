@@ -51,7 +51,7 @@
             class: 'btn btn-outline-secondary' %>
           <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
             method: :delete,
-            data: { confirm: 'Remove from My Drills?' },
+            data: { confirm: 'You will lose your points from this drill if you remove it! Proceed?' },
             class: 'btn btn-outline-danger' %>
         </div>
       </div>
