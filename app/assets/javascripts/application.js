@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require jquery3
+//= require cocoon
 //= require popper
 //= require bootstrap
 //= require_tree .
-//= require cocoon
