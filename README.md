@@ -37,7 +37,7 @@ A Rails application to test your coding skillz! To run the app, start the server
 ### Metika
 
 * Create Student Drills controller
-* Create  Student Drill Groups - delete part
+* Create Student Drill Groups - delete part
 * Prepare information for Actual Questions and Answers
 
 
