@@ -65,10 +65,11 @@ d.save
 
 # RUBY STRINGS LEVEL 1 - Question 3
 d = Drill.new(
-  question: 'Quatation mark (‘ or “) can be used only with what kind of data type?',
+  question: 'The .upcase and .capitalize method are used for capitalizing the whole string. (True or False)',
   drill_group: g,
   solutions: [
-    Solution.new(  solution: 'Strings', drill: d)
+    Solution.new(  solution: 'False', drill: d),
+    Solution.new(  solution: 'The .capitalize method doesn’t change the whole string to uppercase, it just capitalizes the first letter', drill: d)
   ]
 )
 d.save
@@ -98,10 +99,10 @@ d.save
 
 # RUBY STRINGS LEVEL 1 - Question 6
 d = Drill.new(
-  question: 'What is the library function ‘puts’used for?',
+  question: 'What is the function to print and then insert a new blank line?',
   drill_group: g,
   solutions: [
-    Solution.new(  solution: 'prints and then insert a new blank line', drill: d)
+    Solution.new(  solution: 'puts', drill: d)
   ]
 )
 d.save
@@ -112,18 +113,18 @@ d = Drill.new(
   question: 'For getting an input from the user which method is used?',
   drill_group: g,
   solutions: [
-    Solution.new(  solution: 'gets.chomp', drill: d)
+    Solution.new(  solution: 'gets', drill: d)
   ]
 )
 d.save
 
 # RUBY STRINGS LEVEL 1 - Question 8
 d = Drill.new(
-  question: 'What is the role of ! at the end of the capitalize method?',
+  question: 'Which of the following is not a valid datatype? [Float, Integer, Binary, Timedate]',
   drill_group: g,
   solutions: [
-    Solution.new(  solution: 'It modifies the value stored in the variable', drill: d),
-    Solution.new(  solution: 'It mutates the value stored in the variable', drill: d)
+    Solution.new(  solution: 'Timedate', drill: d),
+    Solution.new(  solution: 'datetime is valid datatype but timedate is not a valid datatype', drill: d)
   ]
 )
 d.save
@@ -131,20 +132,22 @@ d.save
 
 # RUBY STRINGS LEVEL 1 - Question 9
 d = Drill.new(
-  question: 'What is the use of .capitalize method?',
+  question: 'Which of the following is not a valid library function? [puts, print, gets, get]',
   drill_group: g,
   solutions: [
-    Solution.new(  solution: 'It capitalizes only the first letter.', drill: d)
+    Solution.new(  solution: 'get', drill: d),
+    Solution.new(  solution: 'gets is used for taking input from the user', drill: d)
   ]
 )
 d.save
 
 # RUBY STRINGS LEVEL 1 - Question 10
 d = Drill.new(
-  question: 'What is the output of the the given code? puts \'My name is #{Name}\'',
+  question: 'We use semicolon or parentheses after every print or puts statement (True or False)',
   drill_group: g,
   solutions: [
-    Solution.new(  solution: 'Name variable not defined', drill: d)
+    Solution.new(  solution: 'False', drill: d),
+    Solution.new(  solution: 'No semicolon or parentheses is required', drill: d)
   ]
 )
 d.save
