@@ -74,6 +74,7 @@ class StudentDrillsController < ApplicationController
 
       # redirect the user to their drills page
       flash[:notice] = "You scored: #{points_awarded} points, #{percentage}%. Your best score: #{highest_points} points, #{highest_score}%."
+
       redirect_to user_student_drill_groups_path(current_user)
     else
       # redirect to the next drill in the drill group
