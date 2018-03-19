@@ -1,24 +1,44 @@
-# README
+# CodeChampz
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails application to test your coding skillz! To run the app, start the server with 'rails s' and go to http://localhost:3000/.
 
-Things you may want to cover:
 
-* Ruby version
+## Technologies Used
 
-* System dependencies
+* Ruby on Rails
 
-* Configuration
+* Bootstrap
 
-* Database creation
+* Simple Form
 
-* Database initialization
+* CanCanCan
 
-* How to run the test suite
+* Cocoon
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Team Members & Contributions
 
-* ...
+
+# Jay
+
+* Put your contributions here
+
+
+# Kaysha
+
+* Put your contributions here
+
+
+# Kealy
+
+* Put your contributions here
+
+
+# Metika
+
+* Put your contributions here
+
+
+# Wendy
+
+* Put your contributions here
