@@ -8,7 +8,6 @@ class User < ApplicationRecord
 
 # students
   has_many :student_drill_groups, dependent: :nullify
-
   has_many :student_drills, dependent: :nullify
 
 # validations
@@ -26,6 +25,7 @@ class User < ApplicationRecord
 
     def full_name
     "#{first_name} #{last_name}".strip
-  end
+    end
+
 
 end
