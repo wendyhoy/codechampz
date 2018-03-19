@@ -24,47 +24,10 @@ A Rails application to test your coding skillz! Check it out on Heroku: https://
 
 ### Jay
 
-
-* order and sort all drill groups by levels for index page
-
-* create capitalize_name method to work before everytime data is saved for better ordering
-
-* create my_drills_index page
-
-* create drill_groups#index page for non_admin users. create add button which creates new student_drill_group
-
-* redirect user to my drill groups page when user attempts to go to sign_in page
-
-* if user.is_admin? redirect to drill_groups_path instead
-
-* change url to sign_in from session/new
-
-* update navbar
-
-* create enter button on landing page linked to sign in page
-
-* create navbar for users and admin
-
+*create, order and sort my_drill_groups by names/levels for index page
+* create all_drill_group page for non_admin users. add_to_my_drill button creates an instance of student_drill_group
+* create navbar for students and admin
 * modify index and create actions in Users controller
-
-* fix route for users
-
-* modify form for user sign up
-
-* update show page for users
-
-* create update action for users controller
-
-* create session controller and set routes
-
-* fix session_controller to sessions_controller
-
-* create home controller and view files for index and leader board
-
-* set route for home controller
-
-* fix routes for home controller
-
 * create validations for user model
 
 
