@@ -8,7 +8,9 @@
   <%= @user.email %>
 </p>
 
-<div class="user-profile-cards d-flex flex-nowrap">
+<%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-outline-light' %>
+
+<div class="user-profile-cards d-flex flex-nowrap mt-3">
   <div class="card points-card m-2 p-4">
     <h2 class="card-title">Your points:</h2>
     <h4 class="card-subtitle">
@@ -30,6 +32,3 @@
       <% end %>
   </div>
 </div>
-
-
-<%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-outline-light' %>
