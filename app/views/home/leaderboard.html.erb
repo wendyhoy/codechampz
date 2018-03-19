@@ -1,13 +1,13 @@
 <h1>Leaderboard</h1>
 
-<div class="w-50 mx-auto">
+<div class="w-75 mx-auto">
   <div class="leaderboard-current-user my-4 d-flex">
     <div>
-      <span class="badge badge-secondary badge-pill p-3">Your points</span>
+      <span class="badge badge-light badge-pill p-3">Your points</span>
       <%= get_user_points(current_user) %>
     </div>
     <div>
-      <span class="badge badge-secondary badge-pill ml-3 p-3">Your badges</span>
+      <span class="badge badge-light badge-pill ml-3 p-3">Your badges</span>
       <%= @badges.count %>
     </div>
   </div>
