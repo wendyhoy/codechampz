@@ -19,26 +19,26 @@ A Rails application to test your coding skillz! To run the app, start the server
 ## Team Members & Contributions
 
 
-# Jay
+### Jay
 
 * Put your contributions here
 
 
-# Kaysha
+### Kaysha
 
 * Put your contributions here
 
 
-# Kealy
+### Kealy
 
 * Put your contributions here
 
 
-# Metika
+### Metika
 
 * Put your contributions here
 
 
-# Wendy
+### Wendy
 
 * Put your contributions here
