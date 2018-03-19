@@ -2,9 +2,7 @@ body {
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
 }
-body * {
-  border-color: rgba(30, 30, 30, 0.1) !important;
-}
+
 .btn-outline-light{
   color: #798C70;
   border-color: #798C70;
@@ -39,19 +37,20 @@ body * {
 }
 
 .container.drill-groups {
-  border: 1px solid gray;
+  border: 1px solid white;
   border-radius: 10px;
   justify-content: center;
   padding-bottom: 1em;
 }
 
 .container.drill-groups > div {
-  border: 1px solid gray;
+  border: 1px solid white;
   border-radius: 10px;
 }
 
 .container.drill-groups > h3 {
-  margin-top: 0.5em;
+  margin-top: 1em;
+  margin-left: 1em;
 }
 
 .card.drill-group {
