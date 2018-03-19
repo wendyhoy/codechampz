@@ -27,7 +27,7 @@ class StudentDrillGroupsController < ApplicationController
       flash[:alert] = 'Sorry, couln\'t add the Drill group'
     end
 
-    redirect_to user_student_drill_groups_path(current_user)
+    redirect_to drill_groups_path
 
   end
 
