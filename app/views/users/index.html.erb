@@ -8,6 +8,8 @@
       <th scope="col">Last name</th>
       <th scope="col">Email</th>
       <th scope="col">Is admin</th>
+      <th scope="col">Points</th>
+      <th scope="col">Badges</th>
       <th scope="col" colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +22,8 @@
         <td><%= user.last_name %></td>
         <td><%= user.email %></td>
         <td><%= user.is_admin %></td>
+        <td><%= get_user_points(user) %></td>
+        <td><%= get_user_badges(user).count %></td>
         <td><%= link_to 'Show', user, class: 'btn btn-outline-secondary' %></td>
       </tr>
     <% end %>

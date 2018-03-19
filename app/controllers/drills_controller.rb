@@ -8,6 +8,7 @@ class DrillsController < ApplicationController
   # GET /drills/1
   # GET /drills/1.json
   def show
+
     @solution = Solution.new
     @solutions = @drill.solutions.order(created_at: :asc)
     @student_drill_group_id = params[:sdgid]
