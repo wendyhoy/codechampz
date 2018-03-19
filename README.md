@@ -24,11 +24,12 @@ A Rails application to test your coding skillz! Check it out on Heroku: https://
 
 ### Jay
 
-* create, order and sort my_drill_groups by names/levels for index page
-* create all_drill_group page for non_admin users. add_to_my_drill button creates an instance of student_drill_group
-* create navbar for students and admin
-* modify index and create actions in Users controller
-* create validations for user model
+* Created, ordered and sorted my_drill_groups by names/levels for the index page
+* Created the all_drill_groups page for non_admin users
+* Implemented the add_to_my_drills button to create an instance of a student_drill_group
+* Created the navbar for students and admin
+* Modified the index and create actions in the users controller
+* Created validations for the user model
 
 
 ### Kaysha
@@ -51,10 +52,10 @@ A Rails application to test your coding skillz! Check it out on Heroku: https://
 
 ### Metika
 
-* Create validation for student drill group, student drill
-* Create Student Drills controller
-* Create Student Drill Groups - delete part
-* Prepare information for Actual Questions and Answers
+* Created validations for the student drill groups and student drills
+* Created the student drills controller
+* Implemented delete for the student drill groups
+* Prepared database seeds with actual questions and answers
 
 
 ### Wendy
