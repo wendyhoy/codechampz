@@ -3,9 +3,12 @@ body {
   font-family: 'Quicksand', sans-serif;
   color: #272512;
 }
+<<<<<<< HEAD
+=======
 body * {
   border-color: rgba(30, 30, 30, 0.1) !important;
 }
+>>>>>>> refs/remotes/origin/integration
 
 .btn-outline-light{
   color: #798C70;
@@ -41,19 +44,20 @@ body * {
 }
 
 .container.drill-groups {
-  border: 1px solid gray;
+  border: 1px solid white;
   border-radius: 10px;
   justify-content: center;
   padding-bottom: 1em;
 }
 
 .container.drill-groups > div {
-  border: 1px solid gray;
+  border: 1px solid white;
   border-radius: 10px;
 }
 
 .container.drill-groups > h3 {
-  margin-top: 0.5em;
+  margin-top: 1em;
+  margin-left: 1em;
 }
 
 .card.drill-group {
