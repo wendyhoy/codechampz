@@ -3,12 +3,7 @@ body {
   font-family: 'Quicksand', sans-serif;
   color: #272512;
 }
-<<<<<<< HEAD
-=======
-body * {
-  border-color: rgba(30, 30, 30, 0.1) !important;
-}
->>>>>>> refs/remotes/origin/integration
+
 
 .btn-outline-light{
   color: #798C70;
@@ -61,7 +56,7 @@ body * {
 }
 
 .card.drill-group {
-  border-color: gray;
+  border-color: rgba(30, 30, 30, 0.2);
   margin:2em 2em 2em 2em ;
   width: 220px;
   height: 275px;
