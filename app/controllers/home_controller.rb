@@ -13,6 +13,8 @@ class HomeController < ApplicationController
   end
 
   def leaderboard
+    @users = StudentDrillGroup.select('user_id, first_name, sum(points_awarded) as total_points').joins(:user).group('user_id, first_name').order('total_points DESC')
+    get_user_badges(current_user)
   end
 
 end

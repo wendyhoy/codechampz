@@ -1,7 +1,14 @@
 body {
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
+  color: #272512;
 }
+<<<<<<< HEAD
+=======
+body * {
+  border-color: rgba(30, 30, 30, 0.1) !important;
+}
+>>>>>>> refs/remotes/origin/integration
 
 .btn-outline-light{
   color: #798C70;
