@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!, except: :index
+  layout "landing_page", only: :index
 
   def index
     if current_user.present?
