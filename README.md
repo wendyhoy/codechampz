@@ -67,7 +67,11 @@ A Rails application to test your coding skillz! To run the app, start the server
 
 ### Kaysha
 
-* Put your contributions here
+* Implemented authentication
+* Implemented authorization
+* Built off Wendy and Metika's student drills controller -- Layout and navigating through completing a quiz
+* Front-end design (color theme, landing page design, favicon)
+* Ensured design cohesion throughout app
 
 
 ### Kealy
