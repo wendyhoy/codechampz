@@ -1,18 +1,35 @@
-<p>
-  <strong>First name:</strong>
+<h2>
   <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+    <%= @user.last_name %>
+</h2>
 
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
 
+<div class="user-profile-cards d-flex flex-nowrap">
+  <div class="card points-card m-2 p-4">
+    <h2 class="card-title">Your points:</h2>
+    <h4 class="card-subtitle">
+      <%= get_user_points(current_user) %>
+    </h4>
+  </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <div class="card badges-card m-2 p-4">
+    <h2 class="card-title">Your badges:</h2>
+    <% if @badges.any? %>
+      <% @badges.each do |badge| %>
+        <div>
+          <h5><span class="badge badge-pill badge-info mx-1 p-2">
+            <%= badge.badge_name %></h5>
+        </div>
+        <% end %>
+      <% else %>
+        <h4>None yet... go and complete some drills!</h4>
+      <% end %>
+  </div>
+</div>
+
+
+<%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-outline-primary' %>

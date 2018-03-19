@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
 
   def show
+    get_user_badges(current_user)
   end
 
 
