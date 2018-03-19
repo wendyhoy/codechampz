@@ -15,7 +15,6 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
-      flash[:notice] = "Thank you for signing in!"
       if user.is_admin?
         redirect_to drill_groups_path
       else
