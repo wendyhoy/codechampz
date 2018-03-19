@@ -10,8 +10,8 @@ class StudentDrillsController < ApplicationController
     @student_drill_group = StudentDrillGroup.find params[:student_drill_group_id]
 
     # check if the attempted answer matches one of the solutions in the drill
-    solutions_arr = @drill.solutions.map { |s| s.solution }
-    correct = solutions_arr.include? @attempted_answer
+    solutions_arr = @drill.solutions.map { |s| s.solution.downcase.strip }
+    correct = solutions_arr.include? @attempted_answer.downcase.strip
 
     if correct
       @correct = true
