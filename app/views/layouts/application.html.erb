@@ -6,6 +6,8 @@
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
   </head>
 
   <body>
@@ -53,7 +55,7 @@
       <% end %>
 
 
-    <div class="container-fluid my-3">
+    <div class="container-fluid">
       <% if flash[:notice].present? %>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
           <%= flash[:notice] %>

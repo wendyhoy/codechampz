@@ -1,6 +1,6 @@
 <h1>Drill Groups</h1>
 
-  <%= link_to 'Add New Group', new_drill_group_path, class: 'btn btn-primary my-3' %>
+  <%= link_to 'Add New Group', new_drill_group_path, class: 'btn btn-outline-light my-3' %>
 
 
 <% unless @beginner_drill_groups.blank? %>
@@ -16,9 +16,9 @@
         <%= bdg.description %>
       </p>
       <div class="group-actions-admin">
-          <%= link_to 'Show', bdg, class: 'btn btn-primary btn-sm' %>
-          <%= link_to 'Edit', edit_drill_group_path(bdg), class: 'btn btn-primary btn-sm' %>
-          <%= link_to 'Destroy', bdg, class: 'btn btn-primary btn-sm',method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Show', bdg, class: 'btn btn-outline-light btn-sm' %>
+          <%= link_to 'Edit', edit_drill_group_path(bdg), class: 'btn btn-outline-light btn-sm' %>
+          <%= link_to 'Destroy', bdg, class: 'btn btn-outline-light btn-sm',method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
     </div>
     <% end %>
@@ -38,9 +38,9 @@
                 <%= idg.description %>
               </p>
               <div class="group-actions-admin">
-                  <%= link_to 'Show', idg, class: 'btn btn-primary btn-sm' %>
-                  <%= link_to 'Edit', edit_drill_group_path(idg), class: 'btn btn-primary btn-sm' %>
-                  <%= link_to 'Destroy', idg, method: :delete, class: 'btn btn-primary btn-sm', data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Show', idg, class: 'btn btn-outline-light btn-sm' %>
+                  <%= link_to 'Edit', edit_drill_group_path(idg), class: 'btn btn-outline-light btn-sm' %>
+                  <%= link_to 'Destroy', idg, method: :delete, class: 'btn btn-outline-light btn-sm', data: { confirm: 'Are you sure?' } %>
               </div>
             </div>
             <% end %>
@@ -48,9 +48,9 @@
               <% end %>
 
       <% unless @advanced_drill_groups.blank? %>
-      
+
         <h3>Advanced</h3>
-      
+
         <% @advanced_drill_groups.each do |adg| %>
           <div class="card m-3 p-4">
             <h5 class="card-title">
@@ -60,11 +60,11 @@
               <%= adg.description %>
             </p>
             <div class="group-actions-admin">
-                <%= link_to 'Show', adg, class: 'btn btn-primary btn-sm' %>
-                <%= link_to 'Edit', edit_drill_group_path(adg), class: 'btn btn-primary btn-sm' %>
-                <%= link_to 'Destroy', adg, method: :delete, class: 'btn btn-primary btn-sm', data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Show', adg, class: 'btn btn-outline-light btn-sm' %>
+                <%= link_to 'Edit', edit_drill_group_path(adg), class: 'btn btn-outline-light btn-sm' %>
+                <%= link_to 'Destroy', adg, method: :delete, class: 'btn btn-outline-light btn-sm', data: { confirm: 'Are you sure?' } %>
             </div>
           </div>
           <% end %>
-      
+
             <% end %>

@@ -1,3 +1,17 @@
+body {
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.btn-outline-light{
+  color: #798C70;
+  border-color: #798C70;
+}
+
+.btn-outline-light:hover {
+  background-color: #798C70;
+  color: white;
+}
 
 .navbar-item {
   margin:0 3px;
