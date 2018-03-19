@@ -22,8 +22,8 @@
         <td><%= user.last_name %></td>
         <td><%= user.email %></td>
         <td><%= user.is_admin %></td>
-        <td><%= StudentDrillGroup.where(user: current_user).sum('points_awarded') %></td>
-        <td><%= StudentDrillGroup.where(user: current_user, score: 100).count %></td>
+        <td><%= get_user_points(user) %></td>
+        <td><%= get_user_badges(user).count %></td>
         <td><%= link_to 'Show', user, class: 'btn btn-outline-secondary' %></td>
       </tr>
     <% end %>

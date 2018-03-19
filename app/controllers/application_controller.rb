@@ -14,6 +14,26 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def get_user_points(this_user)
+      user_points = StudentDrillGroup.where({
+      user: this_user
+    })
+    @points = user_points.sum(:points_awarded)  
+  end
+
+  helper_method :get_user_points
+
+  def get_user_badges(this_user)
+    drill_groups = StudentDrillGroup.where(user: this_user, score: 100).pluck("drill_group_id")
+    @badges = []
+
+    drill_groups.each do |d_id|
+      @badges << DrillGroup.find(d_id)
+    end
+  end
+
+  helper_method :get_user_badges
+
 
   private
 

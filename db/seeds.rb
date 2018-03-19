@@ -38,7 +38,7 @@ g = DrillGroup.create(
   level: 1,
   max_points: 1000,
   user: super_user,
-  badge_name: ''
+  badge_name: 'Ruby Wizard'
 )
 
 # DRILLS - RUBY STRINGS LEVEL 1 - Question 1
@@ -153,11 +153,11 @@ d.save
 # DRILL GROUP - RUBY LANGUAGE LEVEL 2
 g = DrillGroup.create(
   name: 'Ruby Language',
-  description: 'Tests your knowledge of Ruby Language',
+  description: 'Test your knowledge of Ruby Language',
   level: 2,
   max_points: 1000,
   user: super_user,
-  badge_name: ''
+  badge_name: 'Ruby Warrior'
 )
 
 # DRILLS - RUBY STRINGS LEVEL 2 - Question 1
@@ -280,7 +280,7 @@ g = DrillGroup.create(
   level: 3,
   max_points: 1000,
   user: super_user,
-  badge_name: ''
+  badge_name: 'Ruby Superuser'
 )
 
 # DRILLS - RUBY STRINGS LEVEL 3 - Question 1
@@ -398,7 +398,7 @@ g = DrillGroup.create(
   level: 1,
   max_points: 1000,
   user: super_user,
-  badge_name: ''
+  badge_name: 'Javascript Junior'
 )
 
 # DRILLS - JAVASCRIPT STRINGS LEVEL 1 - Question 1
@@ -522,7 +522,7 @@ g = DrillGroup.create(
   level: 2,
   max_points: 1000,
   user: super_user,
-  badge_name: ''
+  badge_name: 'Javascript Ninja'
 )
 
 # DRILLS - JAVASCRIPT STRINGS LEVEL 2 - Question 1
@@ -649,7 +649,7 @@ g = DrillGroup.create(
   level: 3,
   max_points: 1000,
   user: super_user,
-  badge_name: ''
+  badge_name: 'Javascript Buddha'
 )
 
 # DRILLS - JAVASCRIPT STRINGS LEVEL 3 - Question 1
