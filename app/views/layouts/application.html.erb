@@ -14,7 +14,7 @@
 
     <% if user_signed_in? %>
 
-    <nav class="nav navbar navbar-dark navbar-expand-sm justify-content-between" style="background-color: #AEBAA9 ">
+    <nav class="nav navbar navbar-dark navbar-expand-sm justify-content-between" style="background-color: #C9D1C5 ">
       <div class="logo navbar-brand">
         <a href="/">
           <%= image_tag 'enso2.png', alt: 'logo-icon', style: "width:50px; height: 50px;"%>
@@ -22,35 +22,24 @@
       </div>
 
         <% if current_user.is_admin? %>
-          <ul class="navbar nav">
-            <li class="navbar-item admin"><%= link_to 'Quizzes', drill_groups_path %></li>
-            |
-            <li class="navbar-item admin"><%= link_to 'Users', users_path %></li>
-            |
-            <li class="navbar-item student"><%= link_to 'Leaderboard', leaderboard_path %></li>
-            |
-            <li class="navbar-item"><%= link_to 'Logout', session_path, method: :delete %></li>
-          </ul>
+
+          <div class="navbar nav">
+            <%= link_to 'Quizzes', drill_groups_path, class: "nav-item nav-link admin" %>
+            <%= link_to 'Users', users_path, class: "nav-item nav-link admin" %>
+            <%= link_to 'Leaderboard', leaderboard_path, class: "nav-item nav-link student" %>
+            <%= link_to 'Logout', session_path, method: :delete, class: "nav-item nav-link" %>
+          </div>
 
         <% else %>
 
-          <ul class="navbar nav">
-            <div class="navbar nav">
-              <li class="navbar-item student"><%= link_to 'My Quizzes', user_student_drill_groups_path(current_user) %></li>
-              |
-              <li class="navbar-item student"><%= link_to 'All Quizzes', drill_groups_path %></li>
-              |
-              <li class="navbar-item student"><%= link_to 'Leaderboard', leaderboard_path %></li>
-            </div>
-            <div class="navbar nav">
-              <li class="navbar-item student">
-                <span>Hello,
-                  <%= current_user.first_name %>!</span></li>
-              <li class="navbar-item student"><%= link_to 'Profile', user_path(current_user) %></li>
-              ,
-              <li class="navbar-item"><%= link_to 'Logout', session_path, method: :delete %></li>
-            </div>
-          </ul>
+          <div class="navbar nav">
+            <span class="nav-item">Hello, <%= current_user.first_name %>!</span>
+            <%= link_to 'Profile', user_path(current_user), class: "nav-item nav-link" %>
+            <%= link_to 'My Quizzes', user_student_drill_groups_path(current_user), class: "nav-item nav-link" %>
+            <%= link_to 'All Quizzes', drill_groups_path, class: "nav-item nav-link" %>
+            <%= link_to 'Leaderboard', leaderboard_path, class: "nav-item nav-link" %>
+            <%= link_to 'Logout', session_path, method: :delete, class: "nav-item nav-link" %>
+          </div>
 
         <% end %>
       </nav>
@@ -58,6 +47,7 @@
 
 
     <div class="container-fluid">
+      <br>
       <% if flash[:notice].present? %>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
           <%= flash[:notice] %>
