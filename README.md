@@ -88,4 +88,7 @@ A Rails application to test your coding skillz! To run the app, start the server
 
 ### Wendy
 
-* Put your contributions here
+* Implemented base logic for students to complete drill groups
+* Updated the drill groups page to only show drills not already added
+* Reviewed builds and managed git repo
+* Helped with tasks and fixing bugs
