@@ -3,12 +3,14 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
-.btn-outline-primary{
+.btn-outline-light{
   color: #798C70;
   border-color: #798C70;
 }
-.hover {
+
+.btn-outline-light:hover {
   background-color: #798C70;
+  color: white;
 }
 
 .navbar-item {
