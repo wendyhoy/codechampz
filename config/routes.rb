@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get('/', { to: 'home#index', as: :root })
   get('/leaderboard', { to: 'home#leaderboard', as: :leaderboard })
 
+  get('/next', { to: 'student_drills#next', as: :next })
+
 end

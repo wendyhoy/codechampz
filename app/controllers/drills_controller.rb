@@ -12,15 +12,12 @@ class DrillsController < ApplicationController
     @solution = Solution.new
     @solutions = @drill.solutions.order(created_at: :asc)
     @student_drill_group_id = params[:sdgid]
-  end
-
-  # GET /drills/new
-  def new
-    @drill = Drill.new
+    @answered = false
   end
 
   # GET /drills/1/edit
   def edit
+    @solution_count = @drill.solutions.count
   end
 
   # POST /drills
@@ -32,7 +29,7 @@ class DrillsController < ApplicationController
       if @drill.save
         redirect_to drill_group_path(@drill_group), notice: 'Drill was successfully created.'
       else
-        render :new
+        render template: 'admin/drill_groups/show'
       end
 
   end
@@ -41,8 +38,9 @@ class DrillsController < ApplicationController
   # PATCH/PUT /drills/1.json
   def update
       if @drill.update(drill_params)
-        redirect_to @drill, notice: 'Drill was successfully updated.'
+        redirect_to drill_group_path(@drill.drill_group), notice: 'Drill was successfully updated.'
       else
+        @drill.solutions.reload
         render :edit
       end
 
@@ -67,7 +65,7 @@ class DrillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drill_params
-      params.require(:drill).permit(:question, solutions_attributes: [:id, :solution])
+      params.require(:drill).permit(:question, solutions_attributes: [:id, :solution, :_destroy])
     end
 
     def set_drill_group
