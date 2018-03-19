@@ -7,9 +7,24 @@ class DrillGroupsController < ApplicationController
   # GET /drill_groups.json
   def index
     @drill_groups = DrillGroup.order :level
+
+    # get all drill groups
     @beginner_drill_groups = DrillGroup.where(level: 1).order(:name)
     @intermediate_drill_groups = DrillGroup.where(level: 2).order(:name)
     @advanced_drill_groups = DrillGroup.where(level: 3).order(:name)
+
+    # for each set, find which ones are already added to 'my drills'
+    beginner_exclude = DrillGroup.select('id').joins(:student_drill_groups).where('level = 1 and student_drill_groups.user_id = ?', current_user.id)
+
+    intermediate_exclude = DrillGroup.select('id').joins(:student_drill_groups).where('level = 2 and student_drill_groups.user_id = ?', current_user.id)
+
+    advanced_exclude = DrillGroup.select('id').joins(:student_drill_groups).where('level = 3 and student_drill_groups.user_id = ?', current_user.id)
+
+    # exclude the ones that are already added
+    @beginner_drill_groups = @beginner_drill_groups.where.not(id: beginner_exclude)
+    @intermediate_drill_groups = @intermediate_drill_groups.where.not(id: intermediate_exclude)
+    @advanced_drill_groups = @advanced_drill_groups.where.not(id: advanced_exclude)
+
     if current_user.is_admin?
       render '/admin/drill_groups/index'
     end
