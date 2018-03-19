@@ -5,9 +5,9 @@ class StudentDrillGroupsController < ApplicationController
   def index
     @student_drill_groups = current_user.student_drill_groups
     @drill_groups = @student_drill_groups.map do |sdg| sdg.drill_group end
-    @beginner_group = []
-    @intermediate_group = []
-    @advanced_group = []
+    @beginner_drill_groups = []
+    @intermediate_drill_groups = []
+    @advanced_drill_groups = []
 
     sort_by_level
   end
@@ -27,31 +27,35 @@ class StudentDrillGroupsController < ApplicationController
       flash[:alert] = 'Sorry, couln\'t add the Drill group'
     end
 
-    redirect_to user_student_drill_groups_path
+    redirect_to user_student_drill_groups_path(current_user)
 
   end
 
   # DELETE /student_drill_groups/1
   def destroy
+
     student_drill_group = StudentDrillGroup.find params[:id]
     student_drill_group.destroy
-    redirect_to user_student_drill_groups_path
+    redirect_to user_student_drill_groups_path(current_user), notice: "Drill group is deleted."
   end
 
   private
 
     def sort_by_level
       @drill_groups.each do |dg|
-        case dg.level
-        when 1
-          @beginner_group << dg
-        when 2
-          @intermediate_group << dg
-        when 3
-          @advanced_group << dg
+        if dg.present? && dg.drills.present?
+          case dg.level
+          when 1
+            @beginner_drill_groups << dg
+          when 2
+            @intermediate_drill_groups << dg
+          when 3
+            @advanced_drill_groups << dg
+          end
         end
       end
     end
+
 
     def sort_by_name(drill_groups)
       drill_groups.sort { |a,b| a[:name] <=> b[:name] }
@@ -60,4 +64,5 @@ class StudentDrillGroupsController < ApplicationController
     def student_drill_group_params
       params.permit(:user_id, :drill_group_id, :points_awarded, :score)
     end
+
 end

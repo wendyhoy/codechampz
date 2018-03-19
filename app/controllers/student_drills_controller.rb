@@ -53,15 +53,19 @@ class StudentDrillsController < ApplicationController
 
       points_per_drill = drill_group.max_points / total_drills
       points_awarded = points_per_drill * num_correct
-      percentage = 100 * points_awarded / drill_group.max_points 
+      percentage = 100 * points_awarded / drill_group.max_points
 
-      student_drill_group.points_awarded = points_awarded
-      student_drill_group.score = percentage
+      highest_points = [student_drill_group.points_awarded, points_awarded].max
+      highest_score = [student_drill_group.score, percentage].max
+
+      student_drill_group.points_awarded = highest_points
+      student_drill_group.score = highest_score
+      student_drill_group.times_taken += 1
 
       student_drill_group.save
 
       # redirect the user to their drills page
-      flash[:notice] = "Points Awarded: #{points_awarded}, Score: #{percentage}"
+      flash[:notice] = "Your current score: #{points_awarded} points, #{percentage}%. Your best score: #{highest_points} points, #{highest_score}%."
       redirect_to user_student_drill_groups_path(current_user)
     else
       # redirect to the next drill in the drill group

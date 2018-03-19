@@ -7,10 +7,9 @@ class DrillGroupsController < ApplicationController
   # GET /drill_groups.json
   def index
     @drill_groups = DrillGroup.order :level
-    @beginner_group = DrillGroup.where(level: 1).order :name
-    @intermediate_group = DrillGroup.where(level: 2).order :name
-    @advanced_group = DrillGroup.where(level: 3).order :name
-
+    @beginner_drill_groups = DrillGroup.where(level: 1).order(:name)
+    @intermediate_drill_groups = DrillGroup.where(level: 2).order(:name)
+    @advanced_drill_groups = DrillGroup.where(level: 3).order(:name)
     if current_user.is_admin?
       render '/admin/drill_groups/index'
     end
@@ -19,6 +18,9 @@ class DrillGroupsController < ApplicationController
   # GET /drill_groups/1
   # GET /drill_groups/1.json
   def show
+    @drill = Drill.new
+    3.times  { @drill.solutions.build }
+
     @drills = @drill_group.drills
     @friendly_level = @drill_group.friendly_level
 

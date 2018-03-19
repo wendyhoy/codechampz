@@ -2,10 +2,10 @@
 <h1 style="text-align:center">My Drill Groups</h1>
 
 <div class="container drill-groups">
-  <% if @beginner_group.present? %>
+  <% if @beginner_drill_groups.present? %>
   <h3>Beginner Group</h3>
   <div class="beginner d-flex flex-wrap">
-  <% sort_by_name(@beginner_group).each do |dg| %>
+  <% sort_by_name(@beginner_drill_groups).each do |dg| %>
     <div class="card drill-group">
       <div class="card-body">
         <div class="contents">
@@ -16,9 +16,11 @@
           <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
         </div>
         <div class="start-remove d-flex justify-content-around">
-          <%= link_to 'Start', drill_path(dg.drills.first),
+          <%= link_to 'Start', drill_path(
+            id: dg.drills[0].id,
+            sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
             class: 'btn btn-outline-secondary' %>
-          <%= link_to 'Remove', student_drill_group_path(dg),
+          <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
             method: :delete,
             data: { confirm: 'Remove from My Drills?' },
             class: 'btn btn-outline-danger' %>
@@ -29,10 +31,10 @@
   </div>
   <% end %>
 
-<% if @intermediate_group.present? %>
+<% if @intermediate_drill_groups.present? %>
   <h3>Intermediate Group</h3>
   <div class="intermediate d-flex flex-wrap">
-  <% sort_by_name(@intermediate_group).each do |dg| %>
+  <% sort_by_name(@intermediate_drill_groups).each do |dg| %>
     <div class="card drill-group">
       <div class="card-body">
         <div class="contents">
@@ -43,9 +45,11 @@
           <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
         </div>
         <div class="start-remove d-flex justify-content-around">
-          <%= link_to 'Start', drill_path(dg.drills.first),
+          <%= link_to 'Start', drill_path(
+            id: dg.drills[0].id,
+            sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
             class: 'btn btn-outline-secondary' %>
-          <%= link_to 'Remove', student_drill_group_path(dg),
+          <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
             method: :delete,
             data: { confirm: 'Remove from My Drills?' },
             class: 'btn btn-outline-danger' %>
@@ -56,10 +60,10 @@
   </div>
   <% end %>
 
-  <% if @advanced_group.present? %>
+  <% if @advanced_drill_groups.present? %>
   <h3>Advanced Group</h3>
   <div class="advanced d-flex flex-wrap">
-  <% sort_by_name(@advanced_group).each do |dg| %>
+  <% sort_by_name(@advanced_drill_groups).each do |dg| %>
     <div class="card drill-group">
       <div class="card-body">
         <div class="contents">
@@ -70,9 +74,11 @@
           <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
         </div>
         <div class="start-remove d-flex justify-content-around">
-          <%= link_to 'Start', drill_path(dg.drills.first),
+          <%= link_to 'Start', drill_path(
+            id: dg.drills[0].id,
+            sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
             class: 'btn btn-outline-secondary' %>
-          <%= link_to 'Remove', student_drill_group_path(dg),
+          <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
             method: :delete,
             data: { confirm: 'Remove from My Drills?' },
             class: 'btn btn-outline-danger' %>
