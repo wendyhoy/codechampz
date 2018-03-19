@@ -30,6 +30,16 @@
   border: 1px solid gray;
   border-radius: 10px;
   justify-content: center;
+  padding-bottom: 1em;
+}
+
+.container.drill-groups > div {
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.container.drill-groups > h3 {
+  margin-top: 0.5em;
 }
 
 .card.drill-group {
@@ -41,6 +51,11 @@
 
 .card-body > .contents {
   height: 140px;
+}
+
+.drill-group-title {
+  white-space: nowrap;
+  overflow-y: hidden;
 }
 
 .help-block {

@@ -1,34 +1,92 @@
-<h1>Student Drill Groups</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Drill group</th>
-      <th>Points awarded</th>
-      <th>Score</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<h1 style="text-align:center">My Drill Groups</h1>
 
-  <tbody>
-    <% @student_drill_groups.each do |student_drill_group| %>
-      <tr>
-        <td><%= student_drill_group.user_id %></td>
-        <td><%= student_drill_group.drill_group_id %></td>
-        <td><%= student_drill_group.points_awarded %></td>
-        <td><%= student_drill_group.score %></td>
-        <td>
-          <%= link_to 'Start',
-            drill_path(
-              id: DrillGroup.find(student_drill_group.drill_group_id).drills.first,
-              sdgid: student_drill_group.id
-            )
-          %>
-        </td>
-        <td><%= link_to "Remove", student_drill_group_path(student_drill_group), method: :delete, data: { confirm: 'Are you sure that you want to delete this product?' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container drill-groups">
+  <% if @beginner_drill_groups.present? %>
+  <h3>Beginner Group</h3>
+  <div class="beginner d-flex flex-wrap">
+  <% sort_by_name(@beginner_drill_groups).each do |dg| %>
+    <div class="card drill-group">
+      <div class="card-body">
+        <div class="contents">
+          <div class="drill-group-title">
+            <h4 class="card-title"><%= dg.name %></h4>
+          </div>
+          <h6 class="card-text">Level: <%= dg.friendly_level %></h6>
+          <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
+        </div>
+        <div class="start-remove d-flex justify-content-around">
+          <%= link_to 'Start', drill_path(
+            id: dg.drills[0].id,
+            sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
+            class: 'btn btn-outline-secondary' %>
+          <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
+            method: :delete,
+            data: { confirm: 'Remove from My Drills?' },
+            class: 'btn btn-outline-danger' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <% end %>
+
+<% if @intermediate_drill_groups.present? %>
+  <h3>Intermediate Group</h3>
+  <div class="intermediate d-flex flex-wrap">
+  <% sort_by_name(@intermediate_drill_groups).each do |dg| %>
+    <div class="card drill-group">
+      <div class="card-body">
+        <div class="contents">
+          <div class="drill-group-title">
+            <h4 class="card-title"><%= dg.name %></h4>
+          </div>
+          <h6 class="card-text">Level: <%= dg.friendly_level %></h6>
+          <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
+        </div>
+        <div class="start-remove d-flex justify-content-around">
+          <%= link_to 'Start', drill_path(
+            id: dg.drills[0].id,
+            sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
+            class: 'btn btn-outline-secondary' %>
+          <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
+            method: :delete,
+            data: { confirm: 'Remove from My Drills?' },
+            class: 'btn btn-outline-danger' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <% end %>
+
+  <% if @advanced_drill_groups.present? %>
+  <h3>Advanced Group</h3>
+  <div class="advanced d-flex flex-wrap">
+  <% sort_by_name(@advanced_drill_groups).each do |dg| %>
+    <div class="card drill-group">
+      <div class="card-body">
+        <div class="contents">
+          <div class="drill-group-title">
+            <h4 class="card-title"><%= dg.name %></h4>
+          </div>
+          <h6 class="card-text">Level: <%= dg.friendly_level %></h6>
+          <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
+        </div>
+        <div class="start-remove d-flex justify-content-around">
+          <%= link_to 'Start', drill_path(
+            id: dg.drills[0].id,
+            sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
+            class: 'btn btn-outline-secondary' %>
+          <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
+            method: :delete,
+            data: { confirm: 'Remove from My Drills?' },
+            class: 'btn btn-outline-danger' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <% end %>
+
+</div>
