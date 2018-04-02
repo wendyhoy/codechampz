@@ -9,16 +9,15 @@ class SolutionsController < ApplicationController
   end
 
   # POST /solutions
-  # POST /solutions.json
   def create
     @solution = Solution.new(solution_params)
     @solution.drill = @drill
 
-      if @solution.save
-        redirect_to @solution.drill, notice: 'Solution was successfully created.'
-      else
-        render :new
-      end
+    if @solution.save
+      redirect_to @solution.drill, notice: 'Solution was successfully created.'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -26,41 +25,41 @@ class SolutionsController < ApplicationController
   end
 
   # PATCH/PUT /solutions/1
-  # PATCH/PUT /solutions/1.json
   def update
-      if @solution.update(solution_params)
-        redirect_to @solution, notice: 'Solution was successfully updated.'
-      else
-        render :edit
-      end
+    if @solution.update(solution_params)
+      redirect_to @solution, notice: 'Solution was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   # DELETE /solutions/1
-  # DELETE /solutions/1.json
   def destroy
     @solution.destroy
     redirect_to solutions_url, notice: 'Solution was successfully destroyed.'
   end
 
+
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_solution
-      @solution = Solution.find(params[:id])
-    end
+  
+  # Use callbacks to share common setup or constraints between actions.
+  def set_solution
+    @solution = Solution.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def solution_params
-      params.require(:solution).permit(:solution)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def solution_params
+    params.require(:solution).permit(:solution)
+  end
 
-    def set_drill
-      @drill = Drill.find params[:drill_id]
-    end
+  def set_drill
+    @drill = Drill.find params[:drill_id]
+  end
 
-    def authorize_user!
-      unless can?(:manage, @solution)
-        flash[:alert] = "Access Denied!"
-        redirect_to user_student_drill_groups_path(current_user)
-      end
+  def authorize_user!
+    unless can?(:manage, @solution)
+      flash[:alert] = "Access Denied!"
+      redirect_to user_student_drill_groups_path(current_user)
     end
+  end
 end

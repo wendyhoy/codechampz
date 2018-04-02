@@ -36,4 +36,8 @@ class DrillGroup < ApplicationRecord
     name.capitalize!
   end
 
+  # override helper method to return drills ordered by created_at
+  def drills
+    Drill.where(drill_group_id: self.id).order(created_at: :asc)
+  end
 end
