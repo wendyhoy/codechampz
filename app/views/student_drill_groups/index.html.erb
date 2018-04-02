@@ -1,113 +1,116 @@
-
-<h1 style="margin-left: 1em; margin-top: 1em;">My Drill Groups</h1>
+<header>
+  <h1 class="page-heading">My Drill Groups</h1>
+</header>
 <hr>
-<div class="container drill-groups">
+
+<main class="page-container">
+
   <% if @beginner_drill_groups.present? %>
-  <h3>Beginner Group</h3>
-  <div class="beginner d-flex flex-wrap">
-  <% sort_by_name(@beginner_drill_groups).each do |dg| %>
-    <div class="card drill-group">
-      <div class="card-body">
-        <div class="contents">
-          <div class="drill-group-title">
-            <h4 class="card-title"><%= dg.name %></h4>
+    <h3 class="my-3">Beginner Group</h3>
+    <div class="beginner d-flex flex-wrap">
+      <% sort_by_name(@beginner_drill_groups).each do |dg| %>
+        <div class="card drill-group">
+          <div class="card-body">
+            <div class="contents">
+              <div class="drill-group-title">
+                <h4 class="card-title"><%= dg.name %></h4>
+              </div>
+              <h6 class="card-text">Level: <%= dg.friendly_level %></h6>
+              <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
+              <hr>
+              <h6 class="card-text">
+                Times Taken: <%= dg.student_drill_groups.where(user_id: current_user)[0].times_taken %>
+              </h6>
+              <h6 class="card-text">
+                High Score: <%= dg.student_drill_groups.where(user_id: current_user)[0].score %>%
+              </h6>
+            </div>
+            <div class="start-remove d-flex justify-content-around">
+              <%= link_to 'Start', drill_path(
+                id: dg.drills[0].id,
+                sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
+                class: 'btn btn-outline-secondary' %>
+              <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
+                method: :delete,
+                data: { confirm: 'You will lose your points from this drill if you remove it! Proceed?' },
+                class: 'btn btn-outline-danger' %>
+            </div>
           </div>
-          <h6 class="card-text">Level: <%= dg.friendly_level %></h6>
-          <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
-          <hr>
-          <h6 class="card-text">
-            Times Taken: <%= dg.student_drill_groups.where(user_id: current_user)[0].times_taken %>
-          </h6>
-          <h6 class="card-text">
-            High Score: <%= dg.student_drill_groups.where(user_id: current_user)[0].score %>%
-          </h6>
         </div>
-        <div class="start-remove d-flex justify-content-around">
-          <%= link_to 'Start', drill_path(
-            id: dg.drills[0].id,
-            sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
-            class: 'btn btn-outline-secondary' %>
-          <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
-            method: :delete,
-            data: { confirm: 'You will lose your points from this drill if you remove it! Proceed?' },
-            class: 'btn btn-outline-danger' %>
-        </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
-  </div>
   <% end %>
 
-<% if @intermediate_drill_groups.present? %>
-  <h3>Intermediate Group</h3>
-  <div class="intermediate d-flex flex-wrap">
-  <% sort_by_name(@intermediate_drill_groups).each do |dg| %>
-    <div class="card drill-group">
-      <div class="card-body">
-        <div class="contents">
-          <div class="drill-group-title">
-            <h4 class="card-title"><%= dg.name %></h4>
+  <% if @intermediate_drill_groups.present? %>
+    <h3 class="mt-5 mb-3">Intermediate Group</h3>
+    <div class="intermediate d-flex flex-wrap">
+      <% sort_by_name(@intermediate_drill_groups).each do |dg| %>
+        <div class="card drill-group">
+          <div class="card-body">
+            <div class="contents">
+              <div class="drill-group-title">
+                <h4 class="card-title"><%= dg.name %></h4>
+              </div>
+              <h6 class="card-text">Level: <%= dg.friendly_level %></h6>
+              <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
+              <hr>
+              <h6 class="card-text">
+                Times Taken: <%= dg.student_drill_groups.where(user_id: current_user)[0].times_taken %>
+              </h6>
+              <h6 class="card-text">
+                High Score: <%= dg.student_drill_groups.where(user_id: current_user)[0].score %>%
+              </h6>
+            </div>
+            <div class="start-remove d-flex justify-content-around">
+              <%= link_to 'Start', drill_path(
+                id: dg.drills[0].id,
+                sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
+                class: 'btn btn-outline-secondary' %>
+              <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
+                method: :delete,
+                data: { confirm: 'You will lose your points from this drill if you remove it! Proceed?' },
+                class: 'btn btn-outline-danger' %>
+            </div>
           </div>
-          <h6 class="card-text">Level: <%= dg.friendly_level %></h6>
-          <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
-          <hr>
-          <h6 class="card-text">
-            Times Taken: <%= dg.student_drill_groups.where(user_id: current_user)[0].times_taken %>
-          </h6>
-          <h6 class="card-text">
-            High Score: <%= dg.student_drill_groups.where(user_id: current_user)[0].score %>%
-          </h6>
         </div>
-        <div class="start-remove d-flex justify-content-around">
-          <%= link_to 'Start', drill_path(
-            id: dg.drills[0].id,
-            sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
-            class: 'btn btn-outline-secondary' %>
-          <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
-            method: :delete,
-            data: { confirm: 'You will lose your points from this drill if you remove it! Proceed?' },
-            class: 'btn btn-outline-danger' %>
-        </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
-  </div>
   <% end %>
 
   <% if @advanced_drill_groups.present? %>
-  <h3>Advanced Group</h3>
-  <div class="advanced d-flex flex-wrap">
-  <% sort_by_name(@advanced_drill_groups).each do |dg| %>
-    <div class="card drill-group">
-      <div class="card-body">
-        <div class="contents">
-          <div class="drill-group-title">
-            <h4 class="card-title"><%= dg.name %></h4>
+    <h3 class="mt-5 mb-3">Advanced Group</h3>
+    <div class="advanced d-flex flex-wrap">
+      <% sort_by_name(@advanced_drill_groups).each do |dg| %>
+        <div class="card drill-group">
+          <div class="card-body">
+            <div class="contents">
+              <div class="drill-group-title">
+                <h4 class="card-title"><%= dg.name %></h4>
+              </div>
+              <h6 class="card-text">Level: <%= dg.friendly_level %></h6>
+              <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
+              <hr>
+              <h6 class="card-text">
+                Times Taken: <%= dg.student_drill_groups.where(user_id: current_user)[0].times_taken %>
+              </h6>
+              <h6 class="card-text">
+                High Score: <%= dg.student_drill_groups.where(user_id: current_user)[0].score %>%
+              </h6>
+            </div>
+            <div class="start-remove d-flex justify-content-around">
+              <%= link_to 'Start', drill_path(
+                id: dg.drills[0].id,
+                sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
+                class: 'btn btn-outline-secondary' %>
+              <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
+                method: :delete,
+                data: { confirm: 'You will lose your points from this drill if you remove it! Proceed?' },
+                class: 'btn btn-outline-danger' %>
+            </div>
           </div>
-          <h6 class="card-text">Level: <%= dg.friendly_level %></h6>
-          <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
-          <hr>
-          <h6 class="card-text">
-            Times Taken: <%= dg.student_drill_groups.where(user_id: current_user)[0].times_taken %>
-          </h6>
-          <h6 class="card-text">
-            High Score: <%= dg.student_drill_groups.where(user_id: current_user)[0].score %>%
-          </h6>
         </div>
-        <div class="start-remove d-flex justify-content-around">
-          <%= link_to 'Start', drill_path(
-            id: dg.drills[0].id,
-            sdgid: dg.student_drill_groups.where(user_id: current_user)[0].id),
-            class: 'btn btn-outline-secondary' %>
-          <%= link_to 'Remove', student_drill_group_path(id: dg.student_drill_groups.where(user_id: current_user)[0].id),
-            method: :delete,
-            data: { confirm: 'You will lose your points from this drill if you remove it! Proceed?' },
-            class: 'btn btn-outline-danger' %>
-        </div>
-      </div>
+      <% end %>
     </div>
   <% end %>
-  </div>
-  <% end %>
 
-</div>
+</main>

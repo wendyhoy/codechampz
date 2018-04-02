@@ -1,4 +1,4 @@
-<div class="form-group">
+<main class="page-container form-group">
   <%= simple_form_for @user do |f| %>
 
     <%= f.input :first_name, class: 'form-control' %>
@@ -7,7 +7,7 @@
     <%= f.input :password, class: 'form-control' %>
     <%= f.input :password_confirmation, class: 'form-control' %>
 
-    <%= f.submit class: 'btn btn-outline-light' %>
+    <%= f.submit class: 'btn btn-outline-light my-3' %>
 
   <% end %>
-</div>
+</main>

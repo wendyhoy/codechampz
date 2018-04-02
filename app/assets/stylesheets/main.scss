@@ -1,16 +1,25 @@
-
 body {
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
   color: #272512;
 }
 
+header {
+  padding: 40px 40px 0px 40px;
+}
+
+h1.page-heading {
+  margin: 0;
+}
+
+main.page-container {
+  padding: 20px 40px;
+}
 
 .green {
   color: white;
   background-color: #93A38C;
 }
-
 
 .nav-item {
   color: #FAF9F9 !important;
@@ -36,7 +45,6 @@ body {
   margin:0 3px;
 }
 
-
 .navbar-brand {
   margin: 0;
   padding: 0 5px;
@@ -55,26 +63,9 @@ body {
   font-size: 4em;
 }
 
-.container.drill-groups {
-  border: 1px solid white;
-  border-radius: 10px;
-  justify-content: center;
-  padding-bottom: 1em;
-}
-
-.container.drill-groups > div {
-  border: 1px solid white;
-  border-radius: 10px;
-}
-
-.container.drill-groups > h3 {
-  margin-top: 1em;
-  margin-left: 1em;
-}
-
 .card.drill-group {
   border-color: rgba(30, 30, 30, 0.2);
-  margin:2em 2em 2em 2em ;
+  margin: 1em 2em 1em 0em ;
   width: 220px;
   height: 275px;
 }
@@ -92,8 +83,21 @@ body {
   color: #d30008;
 }
 
-// LEADERBOARD
 
+.drill-group-details, 
+.user-profile-details, 
 .leaderboard-current-user {
-  font-size: 1.4em;
+  font-size: 1.2em;
+  padding-bottom: 10px;
+}
+
+.drill-group-details > div > div > span,
+.user-profile-details > div > div > span,
+.leaderboard-current-user > div > div > span {
+  margin-right: 10px;
+  width: 125px;
+}
+
+.user-table > thead > tr > th {
+  border: none;
 }

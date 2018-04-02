@@ -1,70 +1,79 @@
-<h1>Drill Groups</h1>
+<header class="d-flex justify-content-between align-items-center">
+  <div>
+    <h1 class="page-heading">Drill Groups</h1>
+  </div>
+  <div>
+    <%= link_to 'Add New Group', new_drill_group_path, class: 'btn btn-outline-light' %>
+  </div>
+</header>
+<hr />
 
-  <%= link_to 'Add New Group', new_drill_group_path, class: 'btn btn-outline-light my-3' %>
+<main class="page-container">
+  
+  <% unless @beginner_drill_groups.blank? %>
+    <h3>Beginner</h3>
 
-
-<% unless @beginner_drill_groups.blank? %>
-
-  <h3>Beginner</h3>
-
-  <% @beginner_drill_groups.each do |bdg| %>
-    <div class="card m-3 p-4">
-      <h5 class="card-title">
-        <%= bdg.name %>
-      </h5>
-      <p class="card-text">
-        <%= bdg.description %>
-      </p>
-      <div class="group-actions-admin">
-          <%= link_to 'Show', bdg, class: 'btn btn-outline-light btn-sm' %>
-          <%= link_to 'Edit', edit_drill_group_path(bdg), class: 'btn btn-outline-light btn-sm' %>
-          <%= link_to 'Destroy', bdg, class: 'btn btn-outline-light btn-sm',method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% @beginner_drill_groups.each do |bdg| %>
+      <div class="card my-4 p-4">
+        <h5 class="card-title">
+          <%= bdg.name %>
+        </h5>
+        <p class="card-text">
+          <%= bdg.description %>
+        </p>
+        <div class="group-actions-admin">
+            <%= link_to 'Show', bdg, class: 'btn btn-outline-light btn-sm' %>
+            <%= link_to 'Edit', edit_drill_group_path(bdg), class: 'btn btn-outline-light btn-sm' %>
+            <%= link_to 'Destroy', bdg, class: 'btn btn-outline-light btn-sm',method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
-    </div>
     <% end %>
 
-      <% end %>
+  <% end %>
 
-        <% unless @intermediate_drill_groups.blank? %>
+  <% unless @intermediate_drill_groups.blank? %>
 
-          <h3>Intermediate</h3>
+    <br />
+    <h3>Intermediate</h3>
 
-          <% @intermediate_drill_groups.each do |idg| %>
-            <div class="card m-3 p-4">
-              <h5 class="card-title">
-                <%= idg.name %>
-              </h5>
-              <p class="card-text">
-                <%= idg.description %>
-              </p>
-              <div class="group-actions-admin">
-                  <%= link_to 'Show', idg, class: 'btn btn-outline-light btn-sm' %>
-                  <%= link_to 'Edit', edit_drill_group_path(idg), class: 'btn btn-outline-light btn-sm' %>
-                  <%= link_to 'Destroy', idg, method: :delete, class: 'btn btn-outline-light btn-sm', data: { confirm: 'Are you sure?' } %>
-              </div>
-            </div>
-            <% end %>
+    <% @intermediate_drill_groups.each do |idg| %>
+      <div class="card my-4 p-4">
+        <h5 class="card-title">
+          <%= idg.name %>
+        </h5>
+        <p class="card-text">
+          <%= idg.description %>
+        </p>
+        <div class="group-actions-admin">
+            <%= link_to 'Show', idg, class: 'btn btn-outline-light btn-sm' %>
+            <%= link_to 'Edit', edit_drill_group_path(idg), class: 'btn btn-outline-light btn-sm' %>
+            <%= link_to 'Destroy', idg, method: :delete, class: 'btn btn-outline-light btn-sm', data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    <% end %>
 
-              <% end %>
+  <% end %>
 
-      <% unless @advanced_drill_groups.blank? %>
+  <% unless @advanced_drill_groups.blank? %>
 
-        <h3>Advanced</h3>
+    <br />
+    <h3>Advanced</h3>
 
-        <% @advanced_drill_groups.each do |adg| %>
-          <div class="card m-3 p-4">
-            <h5 class="card-title">
-              <%= adg.name %>
-            </h5>
-            <p class="card-text">
-              <%= adg.description %>
-            </p>
-            <div class="group-actions-admin">
-                <%= link_to 'Show', adg, class: 'btn btn-outline-light btn-sm' %>
-                <%= link_to 'Edit', edit_drill_group_path(adg), class: 'btn btn-outline-light btn-sm' %>
-                <%= link_to 'Destroy', adg, method: :delete, class: 'btn btn-outline-light btn-sm', data: { confirm: 'Are you sure?' } %>
-            </div>
-          </div>
-          <% end %>
+    <% @advanced_drill_groups.each do |adg| %>
+      <div class="card my-4 p-4">
+        <h5 class="card-title">
+          <%= adg.name %>
+        </h5>
+        <p class="card-text">
+          <%= adg.description %>
+        </p>
+        <div class="group-actions-admin">
+            <%= link_to 'Show', adg, class: 'btn btn-outline-light btn-sm' %>
+            <%= link_to 'Edit', edit_drill_group_path(adg), class: 'btn btn-outline-light btn-sm' %>
+            <%= link_to 'Destroy', adg, method: :delete, class: 'btn btn-outline-light btn-sm', data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    <% end %>
 
-            <% end %>
+  <% end %>
+</main>

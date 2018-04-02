@@ -1,13 +1,20 @@
-<h1 style="margin-top:3em">Sign In</h1>
+<header>
+  <h1 class="page-heading">Sign In</h1>
+</header>
+<hr>
 
-<%= simple_form_for :session, { url: session_path } do |f| %>
+<main class="page-container">
 
-  <%= f.input :email %>
+  <%= simple_form_for :session, { url: session_path } do |f| %>
 
-  <%= f.input :password %>
+    <%= f.input :email %>
 
-  <%= f.submit 'Sign In', class: 'btn btn-outline-light'  %>
+    <%= f.input :password %>
 
-  <%= link_to 'Sign Up', new_user_path, class: 'btn btn-outline-light' %>
+    <%= f.submit 'Sign In', class: 'btn btn-outline-light'  %>
 
-<% end %>
+    <%= link_to 'Sign Up', new_user_path, class: 'btn btn-outline-light my-3 ml-3' %>
+
+  <% end %>
+  
+</main>
