@@ -61,6 +61,7 @@ A Rails application to test your coding skillz! Check it out on Heroku: https://
 ### Wendy
 
 * Implemented base logic for students to complete drill groups
-* Updated the drill groups page to only show drills not already added
-* Reviewed builds and managed git repo
-* Helped with tasks and fixing bugs
+* Updated the drill groups page to only show drills that haven't been added
+* Prioritized features, delegated tasks, and managed the team's schedule
+* Reviewed builds, facilitated team meetings, and maintained git repo
+* Helped with tasks, fixing bugs, and deployed project to heroku
