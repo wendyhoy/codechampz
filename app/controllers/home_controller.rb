@@ -1,10 +1,10 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!, except: :index
-  layout "landing_page", only: :index
+  layout 'landing_page', only: :index
 
   def index
     if current_user.present?
-      if current_user.is_admin?
+      if current_user.is_admin? || current_user.student_drill_groups.empty?
         redirect_to drill_groups_path
       else
         redirect_to user_student_drill_groups_path(current_user)
@@ -16,5 +16,4 @@ class HomeController < ApplicationController
     @users = StudentDrillGroup.select('user_id, first_name, sum(points_awarded) as total_points').joins(:user).group('user_id, first_name').order('total_points DESC')
     get_user_badges(current_user)
   end
-
 end

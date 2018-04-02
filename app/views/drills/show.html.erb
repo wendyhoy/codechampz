@@ -1,99 +1,97 @@
-<div class=" d-flex">
-  <h3>Drill Group:
-    <%= @drill.drill_group.name %>
-  </h3>
-</div>
-
-<div class=" d-flex my-2">
-  <div class="mr-3">
-    <strong>Level:</strong>
-    <%= @drill.drill_group.friendly_level %>
-  </div>
-
-  <div class="mr-3">
-    <strong>Max points:</strong>
-    <%= @drill.drill_group.max_points %>
-  </div>
-
-  <div class="mr-3">
-    <strong>Badge name:</strong>
-    <%= @drill.drill_group.badge_name %>
-  </div>
-</div>
-
-<hr />
-<br />
-
-<div class="d-flex">
-
-  <h3><%= @drill.question %></h3>
-</div>
-
-<br />
-
-<% if !@answered %>
-  <%= simple_form_for :attempt,
-    url: user_student_drills_path(current_user),
-    method: 'post' do |f|
-  %>
-    <%= hidden_field_tag 'student_drill_group_id', @student_drill_group_id %>
-    <%= hidden_field_tag 'drill_id', @drill.id %>
-    <%= f.input :answer  %>
-    <%= f.submit "Submit", class: "btn btn-outline-light", id: "attempt-btn" %>
-  <% end %>
-<% end %>
-
-<% if @answered %>
-  <%= simple_form_for :attempt,
-    url: user_student_drills_path(current_user),
-    method: 'post' do |f|
-  %>
-    <%= hidden_field_tag 'student_drill_group_id', @student_drill_group_id %>
-    <%= hidden_field_tag 'drill_id', @drill.id %>
-    <%= f.input :answer, disabled: true  %>
-
-    <div class="d-flex justify-content-between">
-      <%= f.submit "Submit", class: "btn btn-outline-light", id: "attempt-btn", disabled: true %>
-      <%= link_to 'Next Question',
-        next_path(
-          drill_id: @drill.id,
-          sdgid: @student_drill_group.id
-        ),
-        class: "btn btn-outline-light"
-      %>
+<header>
+  <h1>Drill Group: <%= @drill.drill_group.name %></h1>
+  <div class=" d-flex my-2">
+    <div class="mr-3">
+      <strong>Level:</strong>
+      <%= @drill.drill_group.friendly_level %>
     </div>
-  <% end %>
+
+    <div class="mr-3">
+      <strong>Max points:</strong>
+      <%= @drill.drill_group.max_points %>
+    </div>
+
+    <div class="mr-3">
+      <strong>Badge name:</strong>
+      <%= @drill.drill_group.badge_name %>
+    </div>
+  </div>
+</header>
+<hr>
+
+<main class="page-container">
+
+  <div>
+    <h3><%= @drill.question %></h3>
+  </div>
 
   <br />
 
-  <div>
-    <hr />
+  <% if !@answered %>
+    <%= simple_form_for :attempt,
+      url: user_student_drills_path(current_user),
+      method: 'post' do |f|
+    %>
+      <%= hidden_field_tag 'student_drill_group_id', @student_drill_group_id %>
+      <%= hidden_field_tag 'drill_id', @drill.id %>
+      <%= f.input :answer  %>
+      <%= f.submit "Submit", class: "btn btn-outline-light", id: "attempt-btn" %>
+    <% end %>
+  <% end %>
 
-    <h3>
-      <% if @correct %>
-        Correct! Good job!
-      <% else %>
-          Not quite! Keep working on it!
-      <% end %>
-    </h3>
+  <% if @answered %>
+    <%= simple_form_for :attempt,
+      url: user_student_drills_path(current_user),
+      method: 'post' do |f|
+    %>
+      <%= hidden_field_tag 'student_drill_group_id', @student_drill_group_id %>
+      <%= hidden_field_tag 'drill_id', @drill.id %>
+      <%= f.input :answer, disabled: true  %>
 
-    <div class="card my-3 p-3">
-      <%= @attempted_answer %>
-    </div>
-    <hr />
+      <div class="d-flex justify-content-between">
+        <%= f.submit "Submit", class: "btn btn-outline-light", id: "attempt-btn", disabled: true %>
+        <%= link_to 'Next Question',
+          next_path(
+            drill_id: @drill.id,
+            sdgid: @student_drill_group.id
+          ),
+          class: "btn btn-outline-light"
+        %>
+      </div>
+    <% end %>
+
     <br />
-
-    <h4>Accepted Solutions:</h4>
 
     <div>
-      <% @drill.solutions.each do |s| %>
-        <div class="card my-3 p-3">
-          <%= s.solution %>
-        </div>
-      <% end %>
-    </div>
+      <hr />
 
-    <br />
-    <br />
-  </div>
-<% end %>
+      <h3>
+        <% if @correct %>
+          Correct! Good job!
+        <% else %>
+            Not quite! Keep working on it!
+        <% end %>
+      </h3>
+
+      <div class="card my-3 p-3">
+        <%= @attempted_answer %>
+      </div>
+      <hr />
+      <br />
+
+      <h4>Accepted Solutions:</h4>
+
+      <div>
+        <% @drill.solutions.each do |s| %>
+          <div class="card my-3 p-3">
+            <%= s.solution %>
+          </div>
+        <% end %>
+      </div>
+
+      <br />
+      <br />
+    </div>
+  <% end %>
+
+</main>

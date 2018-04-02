@@ -30,6 +30,12 @@ super_student = User.create(
   password: PASSWORD
 )
 
+guest_student = User.create(
+  first_name: 'Guest',
+  last_name: 'User',
+  email: 'guest@codezen.com',
+  password: PASSWORD
+)
 
 # DRILL GROUP - RUBY STRINGS LEVEL 1
 g = DrillGroup.create(
@@ -819,3 +825,5 @@ student_drills = StudentDrill.all
 puts "Created #{students.count} students with #{student_drills.count} drills from #{student_drill_groups.count} student drill groups"
 
 puts "Log in as admin with email: #{super_user.email} password: #{super_user.password} or as student with email: #{super_student.email} password: #{super_student.password}. Have fun!"
+
+puts "Log in as guest with email: #{guest_student.email} password: #{guest_student.password}. Have fun!"

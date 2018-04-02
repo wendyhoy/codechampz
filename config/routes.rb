@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:create, :destroy]
   get('/sign_in', { to: 'sessions#new' })
+  get('/sign_in_as_guest', { to: 'sessions#create_guest' })
 
   get('/', { to: 'home#index', as: :root })
   get('/leaderboard', { to: 'home#leaderboard', as: :leaderboard })

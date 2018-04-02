@@ -11,9 +11,15 @@
 
     <%= f.input :password %>
 
-    <%= f.submit 'Sign In', class: 'btn btn-outline-light'  %>
-
-    <%= link_to 'Sign Up', new_user_path, class: 'btn btn-outline-light my-3 ml-3' %>
+    <div class="d-flex justify-content-between my-4">
+      <div>
+        <%= f.submit 'Sign In', class: 'btn btn-outline-light'  %>
+      </div>
+      <div>
+        <%= link_to 'Sign In As Guest', sign_in_as_guest_path, class: 'btn btn-outline-light ml-3' %>
+        <%= link_to 'Sign Up', new_user_path, class: 'btn btn-outline-light ml-3' %>
+      </div>
+    </div>
 
   <% end %>
   

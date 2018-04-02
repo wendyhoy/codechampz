@@ -11,31 +11,23 @@ class StudentDrillsController < ApplicationController
 
     # check if the attempted answer matches one of the solutions in the drill
     solutions_arr = @drill.solutions.map { |s| s.solution.downcase.strip }
-    correct = solutions_arr.include? @attempted_answer.downcase.strip
-
-    if correct
-      @correct = true
-    else
-      @correct = false
-    end
+    @correct = solutions_arr.include? @attempted_answer.downcase.strip
 
     # save whether the user answered the drill correctly in the
     # StudentDrill table
     student_drill = StudentDrill.new(
       user: current_user,
       drill: @drill,
-      is_correct: correct
+      is_correct: @correct
     )
 
     student_drill.save
-
     @answered = true
 
     render 'drills/show'
   end
 
   def next
-
     drill = Drill.find params[:drill_id]
     student_drill_group = StudentDrillGroup.find params[:sdgid]
 
@@ -59,9 +51,10 @@ class StudentDrillsController < ApplicationController
       answers = StudentDrill.where(user: current_user).order(created_at: :desc).limit(total_drills)
       num_correct = answers.count { |answer| answer.is_correct }
 
-      points_per_drill = drill_group.max_points / total_drills
-      points_awarded = points_per_drill * num_correct
-      percentage = 100 * points_awarded / drill_group.max_points
+      points_per_drill = (drill_group.max_points.to_f / total_drills).ceil
+      points_awarded = [points_per_drill * num_correct, drill_group.max_points].min
+      percentage = (100 * points_awarded.to_f / drill_group.max_points).ceil
+      percentage = [percentage, 100].min
 
       highest_points = [student_drill_group.points_awarded, points_awarded].max
       highest_score = [student_drill_group.score, percentage].max
@@ -83,16 +76,17 @@ class StudentDrillsController < ApplicationController
         sdgid: student_drill_group.id
       })
     end
-
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_student_drill
-      @student_drill = StudentDrill.find(params[:id])
-    end
 
-    def student_drill_params
-      params.require(:attempt).permit(:answer)
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_student_drill
+    @student_drill = StudentDrill.find(params[:id])
+  end
+
+  def student_drill_params
+    params.require(:attempt).permit(:answer)
+  end
 end

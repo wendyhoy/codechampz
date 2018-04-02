@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
       @badges << DrillGroup.find(d_id)
     end
   end
-
   helper_method :get_user_badges
 
 
