@@ -20,9 +20,9 @@ class StudentDrillGroupsController < ApplicationController
     student_drill_group.drill_group = drill_group
     student_drill_group.user = current_user
     if student_drill_group.save
-      flash[:notice] = 'Drill group added successfully!'
+      flash[:notice] = 'Quiz added successfully!'
     else
-      flash[:alert] = 'Sorry, couln\'t add the Drill group'
+      flash[:alert] = 'Sorry, couln\'t add the quiz.'
     end
 
     redirect_to drill_groups_path
@@ -32,7 +32,7 @@ class StudentDrillGroupsController < ApplicationController
   def destroy
     student_drill_group = StudentDrillGroup.find params[:id]
     student_drill_group.destroy
-    redirect_to user_student_drill_groups_path(current_user), notice: "Drill group is deleted."
+    redirect_to user_student_drill_groups_path(current_user), notice: "Quiz removed successfully."
   end
 
 
