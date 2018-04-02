@@ -1,28 +1,32 @@
-<h1 style="margin-left: 2.5em; margin-top: 0.8em">Leaderboard</h1>
+<header>
+  <h1 class="page-heading">Leaderboard</h1>
+</header>
 <hr>
-<div class="w-75 mx-auto">
-  <div class="leaderboard-current-user my-4 d-flex">
-    <div>
-      <span class="badge badge-light badge-pill p-3">Your points</span>
-      <%= get_user_points(current_user) %>
+
+<main class="page-container">
+
+  <div class="leaderboard-current-user">
+    <div class="d-flex align-items-baseline my-3">
+      <div><span class="badge badge-light badge-pill p-3">Your points</span></div>
+      <div><%= get_user_points(current_user) %></div>
     </div>
-    <div>
-      <span class="badge badge-light badge-pill ml-3 p-3">Your badges</span>
-      <%= @badges.count %>
+    <div class="d-flex align-items-baseline my-3">
+      <div><span class="badge badge-light badge-pill p-3">Your badges</span></div>
+      <div><%= @badges.count %></div>
     </div>
   </div>
 
-  <ul class="list-group list-group-flush">
+  <ul class="list-group list-group-flush my-4">
     <% @users.each do |user| %>
       <% if user.user_id === current_user.id %>
         <li class="list-group-item green d-flex justify-content-between align-items-center">
-        <% else %>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <% end %>
-              <div><%= user.first_name %></div>
-              <div><%= user.total_points %></div>
-          </li>
-          <% end %>
+      <% else %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+      <% end %>
+        <div><%= user.first_name %></div>
+        <div><%= user.total_points %></div>
+      </li>
+    <% end %>
   </ul>
 
-</div>
+</main>

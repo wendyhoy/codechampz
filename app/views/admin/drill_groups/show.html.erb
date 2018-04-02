@@ -1,56 +1,61 @@
-<div class="drill-group-header-admin d-flex justify-content-between">
+<header class="d-flex justify-content-between align-items-center">
   <div>
-    <h2>Drill Group:
-      <%= @drill_group.name %>
-    </h2>
+    <h1 class="page-heading">Drill Group: <%= @drill_group.name %></h1>
   </div>
   <div>
     <%= link_to 'Edit Group', edit_drill_group_path(@drill_group), class: "btn btn-outline-light" %>
   </div>
-</div>
-
-<div>
-  <%= @drill_group.description %>
-</div>
-
-<div class="drill-group-info-admin d-flex my-2">
-  <div class="mr-3">
-    <strong>Level:</strong>
-    <%= @friendly_level %>
-  </div>
-
-  <div class="mr-3">
-    <strong>Max points:</strong>
-    <%= @drill_group.max_points %>
-  </div>
-
-  <div class="mr-3">
-    <strong>Badge name:</strong>
-    <%= @drill_group.badge_name %>
-  </div>
-</div>
-
+</header>
 <hr />
 
-<h4>Drills</h4>
-
-<div class="drill-list-admin">
-  <% @drill_group.drills.each do |drill| %>
-    <div class="card my-3 p-3">
-      <div class="card-text d-flex justify-content-between align-items-center">
-        <%= drill.question %>
-          <div class="drill-list-card-actions-admin d-flex flex-nowrap pl-2">
-            <%= link_to 'Edit', edit_drill_path(drill), class: 'btn btn-outline-secondary m-1' %>
-              <%= link_to 'Delete', drill_path(drill), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-secondary m-1' %>
-          </div>
-      </div>
-
+<main class="page-container">
+  
+  <div class="drill-group-details">
+    <div class="d-flex align-items-baseline my-3">
+      <div><span class="badge badge-light badge-pill p-3">Description</span></div>
+      <div><%= @drill_group.description %></div>
     </div>
-    <% end %>
-</div>
+    <div class="d-flex align-items-baseline my-3">
+      <div><span class="badge badge-light badge-pill p-3">Level</span></div>
+      <div><%= @friendly_level %></div>
+    </div>
+    <div class="d-flex align-items-baseline my-3">
+      <div><span class="badge badge-light badge-pill p-3">Max Points</span></div>
+      <div><%= @drill_group.max_points %></div>
+    </div>
+    <div class="d-flex align-items-baseline my-3">
+      <div><span class="badge badge-light badge-pill p-3">Badge Name</span></div>
+      <div><%= @drill_group.badge_name %></div>
+    </div>
+  </div>
 
-<hr />
+  <hr />
 
-<h3>Add new drill</h3>
+  <% if !@drill_group.drills.empty? %>
+    <div class="my-5">
 
-<%= render 'admin/drill_groups/drill_form', locals: @drill %>
+      <h3>Drills</h3>
+
+      <% @drill_group.drills.each do |drill| %>
+        <div class="card my-3 p-3">
+          <div class="card-text d-flex justify-content-between align-items-center">
+            <%= drill.question %>
+            <div class="drill-list-card-actions-admin d-flex flex-nowrap pl-2">
+              <%= link_to 'Edit', edit_drill_path(drill), class: 'btn btn-outline-secondary m-1' %>
+              <%= link_to 'Delete', drill_path(drill), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-secondary m-1' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    
+    </div>
+
+    <hr />
+  <% end %>
+
+  <br />
+
+  <h3 class="mb-4">Add new drill</h3>
+
+  <%= render 'admin/drill_groups/drill_form', locals: @drill %>
+</main>
