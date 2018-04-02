@@ -1,0 +1,34 @@
+<h2>
+  <%= @user.first_name %>
+    <%= @user.last_name %>
+</h2>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-outline-light' %>
+
+<div class="user-profile-cards d-flex flex-nowrap mt-3">
+  <div class="card points-card mr-3 p-4">
+    <h2 class="card-title">Your points:</h2>
+    <h4 class="card-subtitle">
+      <%= @points %>
+    </h4>
+  </div>
+
+  <div class="card badges-card mr-3 p-4">
+    <h2 class="card-title">Your badges:</h2>
+    <% if @badges.any? %>
+      <% @badges.each do |badge| %>
+        <div>
+          <h5><span class="badge badge-pill green mx-1 p-2">
+            <%= badge.badge_name %></h5>
+        </div>
+        <% end %>
+      <% else %>
+        <h4>None yet... go and complete some drills!</h4>
+      <% end %>
+  </div>
+</div>

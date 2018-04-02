@@ -1,0 +1,27 @@
+<p>
+  <strong>Name:</strong>
+  <%= @drill_group.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @drill_group.description %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @drill_group.level %>
+</p>
+
+<p>
+  <strong>Max points:</strong>
+  <%= @drill_group.max_points %>
+</p>
+
+<p>
+  <strong>Badge name:</strong>
+  <%= @drill_group.badge_name %>
+</p>
+
+<%= link_to 'Edit', edit_drill_group_path(@drill_group) %> |
+<%= link_to 'Back', drill_groups_path %>

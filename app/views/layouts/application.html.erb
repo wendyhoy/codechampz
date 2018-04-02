@@ -1,14 +1,74 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Codechampz</title>
+    <title>CodeZen</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <%= favicon_link_tag 'codezenfav.png' %>
+
   </head>
 
   <body>
-    <%= yield %>
+
+    <% if user_signed_in? %>
+
+    <nav class="nav navbar navbar-dark navbar-expand-sm justify-content-between" style="background-color: #93A38C ">
+      <div class="logo navbar-brand">
+        <a href="/">
+          <%= image_tag 'enso2.png', alt: 'logo-icon', style: "width:50px; height: 50px;"%>
+        </a>
+      </div>
+
+        <% if current_user.is_admin? %>
+
+          <div class="navbar nav">
+            <%= link_to 'Quizzes', drill_groups_path, class: "nav-item nav-link admin" %>
+            <%= link_to 'Users', users_path, class: "nav-item nav-link admin" %>
+            <%= link_to 'Leaderboard', leaderboard_path, class: "nav-item nav-link student" %>
+            <%= link_to 'Logout', session_path, method: :delete, class: "nav-item nav-link" %>
+          </div>
+
+        <% else %>
+
+          <div class="navbar nav">
+            <span class="nav-item">Hello, <%= current_user.first_name %>!</span>
+            <%= link_to 'Profile', user_path(current_user), class: "nav-item nav-link" %>
+            <%= link_to 'My Quizzes', user_student_drill_groups_path(current_user), class: "nav-item nav-link" %>
+            <%= link_to 'All Quizzes', drill_groups_path, class: "nav-item nav-link" %>
+            <%= link_to 'Leaderboard', leaderboard_path, class: "nav-item nav-link" %>
+            <%= link_to 'Logout', session_path, method: :delete, class: "nav-item nav-link" %>
+          </div>
+
+        <% end %>
+      </nav>
+      <% end %>
+
+
+    <div class="container w-75">
+      <br>
+      <% if flash[:notice].present? %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= flash[:notice] %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% elsif flash[:alert].present? %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= flash[:alert] %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+
+
+      <%= yield %>
+
+    </div>
+
   </body>
 </html>

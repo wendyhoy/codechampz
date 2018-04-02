@@ -1,0 +1,10 @@
+<div class="form-group">
+
+  <%= simple_form_for [@drill, @solution] do |form| %>
+
+    <%= f.input :solution, class: 'form-control' %>
+
+    <%= f.submit 'Save', class: 'btn btn-outline-light' %>
+
+  <% end %>
+</div>

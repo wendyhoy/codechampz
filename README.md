@@ -1,24 +1,66 @@
-# README
+# CodeZen
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails application to test your coding skillz! Check it out on Heroku: https://codezzen.herokuapp.com/.  Or to run the app, do the following:
 
-Things you may want to cover:
+* Clone or download the repository
+* Run 'bundle'
+* Run 'rails db:create'
+* Run 'rails db:migrate'
+* Run 'rails db:seed' (optional)
+* Start the server with 'rails s' and go to http://localhost:3000/.
 
-* Ruby version
 
-* System dependencies
+## Technologies Used
 
-* Configuration
+* Ruby on Rails
+* Bootstrap
+* Simple Form
+* CanCanCan
+* Cocoon
 
-* Database creation
 
-* Database initialization
+## Team Members & Contributions
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### Jay
 
-* Deployment instructions
+* Created, ordered and sorted my_drill_groups by names/levels for the index page
+* Created the all_drill_groups page for non_admin users
+* Implemented the add_to_my_drills button to create an instance of a student_drill_group
+* Created the navbar for students and admin
+* Modified the index and create actions in the users controller
+* Created validations for the user model
 
-* ...
+
+### Kaysha
+
+* Implemented authentication
+* Implemented authorization
+* Built off Wendy and Metika's student drills controller -- Layout and navigating through completing a quiz
+* Front-end design (color theme, landing page design, favicon)
+* Ensured design cohesion throughout app
+
+
+### Kealy
+
+* Added validations for drill, drill group and solution
+* Implemented CRUD for drill groups, drill and solution controllers
+* Styled drill groups, drill and solutions CUD views, including nested forms
+* Implemented user badges and points
+* With Wendy, implemented leaderboard
+
+
+### Metika
+
+* Created validations for the student drill groups and student drills
+* Created the student drills controller
+* Implemented delete for the student drill groups
+* Prepared database seeds with actual questions and answers
+
+
+### Wendy
+
+* Implemented base logic for students to complete drill groups
+* Updated the drill groups page to only show drills not already added
+* Reviewed builds and managed git repo
+* Helped with tasks and fixing bugs

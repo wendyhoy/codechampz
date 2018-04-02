@@ -1,0 +1,74 @@
+
+<h1 style="margin-left: 1em; margin-top: 1em;">All Drill Groups</h1>
+<hr>
+<div class="container drill-groups">
+
+  <h3>Beginner Group</h3>
+  <div class="beginner d-flex flex-wrap">
+  <% @beginner_drill_groups.each do |dg| %>
+    <div class="card drill-group">
+      <div class="card-body">
+        <div class="contents">
+          <div class="drill-group-title">
+            <h4 class="card-title"><%= dg.name %></h4>
+          </div>
+          <h6 class="card-text">Level: <%= dg.friendly_level %></h6>
+          <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
+        </div>
+        <div class="add-mylist d-flex justify-content-center">
+          <%= link_to 'Add To My Drills', user_student_drill_groups_path(current_user, drill_group_id: dg.id),
+            method: :post,
+            data: { confirm: 'add to My Drills?' },
+            class: 'btn btn-outline-secondary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+
+  <h3>Intermediate Group</h3>
+  <div class="intermediate d-flex flex-wrap">
+  <% @intermediate_drill_groups.each do |dg| %>
+    <div class="card drill-group">
+      <div class="card-body">
+        <div class="contents">
+          <div class="drill-group-title">
+            <h4 class="card-title"><%= dg.name %></h4>
+          </div>
+          <h6 class="card-text">Level: <%= dg.friendly_level %></h6>
+          <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
+        </div>
+        <div class="add-mylist d-flex justify-content-center">
+          <%= link_to 'Add To My Drills', user_student_drill_groups_path(current_user, drill_group_id: dg.id),
+            method: :post,
+            data: { confirm: 'add to My Drills?' },
+            class: 'btn btn-outline-secondary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <h3>Advanced Group</h3>
+  <div class="advanced d-flex flex-wrap">
+  <% @advanced_drill_groups.each do |dg| %>
+    <div class="card drill-group">
+      <div class="card-body">
+        <div class="contents">
+          <div class="drill-group-title">
+            <h4 class="card-title"><%= dg.name %></h4>
+          </div>
+          <h6 class="card-text">Level: <%= dg.friendly_level %></h6>
+          <h6 class="card-text">Total Points: <%= dg.max_points %></h6>
+        </div>
+        <div class="add-mylist d-flex justify-content-center">
+          <%= link_to 'Add To My Drills', user_student_drill_groups_path(current_user, drill_group_id: dg.id),
+            method: :post,
+            data: { confirm: 'add to My Drills?' },
+            class: 'btn btn-outline-secondary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+
+</div>

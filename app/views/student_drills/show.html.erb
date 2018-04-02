@@ -1,0 +1,17 @@
+<p>
+  <strong>User:</strong>
+  <%= @student_drill.user %>
+</p>
+
+<p>
+  <strong>Drill:</strong>
+  <%= @student_drill.drill %>
+</p>
+
+<p>
+  <strong>Is correct:</strong>
+  <%= @student_drill.is_correct %>
+</p>
+
+<%= link_to 'Edit', edit_student_drill_path(@student_drill) %> |
+<%= link_to 'Back', student_drills_path %>
