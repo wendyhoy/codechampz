@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   end
   helper_method :user_signed_in?
 
-
   def current_user
     if session[:user_id].present?
       @current_user ||= User.find_by(id: session[:user_id])
@@ -15,12 +14,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def get_user_points(this_user)
-      user_points = StudentDrillGroup.where({
-      user: this_user
-    })
+    user_points = StudentDrillGroup.where({user: this_user})
     @points = user_points.sum(:points_awarded)  
   end
-
   helper_method :get_user_points
 
   def get_user_badges(this_user)
