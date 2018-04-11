@@ -1,6 +1,6 @@
 # CodeZen
 
-A Rails application to test your coding skillz! Check it out on Heroku: https://codezzen.herokuapp.com/.  Or to run the app, do the following:
+A Rails application to test your coding skillz! Check it out on Heroku: https://getcodezen.herokuapp.com/.  Or to run the app, do the following:
 
 * Clone or download the repository
 * Run 'bundle'
